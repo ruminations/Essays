@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- copyright 2017 John Hull, ASSAIL licensed:
+     https://github.com/ruminations/Licenses -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+  <!ENTITY x_extent "12">
+  <!ENTITY x_view "512">
+  <!ENTITY y_extent "12">
+  <!ENTITY y_view "512">
+  ]>
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     enable-background="new 0 0 &x_view; &y_view;"
+     width="&x_extent;cm" height="&y_extent;cm"
+     viewBox="0 0 &x_view; &y_view;" x="0px"  y="0px">
+  <g id="group_0" transform="translate(256.0,256.0) scale(1.0,-1.0)" >
+    <rect id="rect_0" x="-200.0" y="-200.0" width="400.0" height="400.0"
+        fill="Black" stroke="Black" stroke-width="0.0"/>
+    <circle id="disk_0" cx="0.0" cy="0.0" r="222.626868"
+        fill="#FFFF99" stroke="Black" stroke-width="1.0"/>
+    <circle id="disk_0c" cx="0.0" cy="0.0" r="3"
+        fill="White" stroke="Black" stroke-width="2.0"/>
+    <circle id="disk_0p" cx="0.0" cy="0.0" r="221.638838"
+        fill="none" stroke="Green" stroke-width="1.0"/>
+    <circle id="disk_1" cx="148.894587" cy="148.894587" r="72.273968"
+        fill="#FFFF99" stroke="Black" stroke-width="1.0"/>
+    <circle id="disk_1c" cx="148.894587" cy="148.894587" r="3"
+        fill="White" stroke="Black" stroke-width="2.0"/>
+    <circle id="disk_1p" cx="147.759225" cy="147.759225" r="73.879613"
+        fill="none" stroke="Green" stroke-width="1.0"/>
+    <circle id="disk_2" cx="-148.894587" cy="-148.894587" r="72.273968"
+        fill="#FFFF99" stroke="Black" stroke-width="1.0"/>
+    <circle id="disk_2c" cx="-148.894587" cy="-148.894587" r="3"
+        fill="White" stroke="Black" stroke-width="2.0"/>
+    <circle id="disk_2p" cx="-147.759225" cy="-147.759225" r="73.879613"
+        fill="none" stroke="Green" stroke-width="1.0"/>
+    <circle id="disk_3" cx="-148.894587" cy="148.894587" r="72.273968"
+        fill="#FFFF99" stroke="Black" stroke-width="1.0"/>
+    <circle id="disk_3c" cx="-148.894587" cy="148.894587" r="3"
+        fill="White" stroke="Black" stroke-width="2.0"/>
+    <circle id="disk_3p" cx="-147.759225" cy="147.759225" r="73.879613"
+        fill="none" stroke="Green" stroke-width="1.0"/>
+    <circle id="disk_4" cx="148.894587" cy="-148.894587" r="72.273968"
+        fill="#FFFF99" stroke="Black" stroke-width="1.0"/>
+    <circle id="disk_4c" cx="148.894587" cy="-148.894587" r="3"
+        fill="White" stroke="Black" stroke-width="2.0"/>
+    <circle id="disk_4p" cx="147.759225" cy="-147.759225" r="73.879613"
+        fill="none" stroke="Green" stroke-width="1.0"/>
+    <rect id="rect_1" x="-200.0" y="-200.0" width="400.0" height="400.0"
+        fill="none" stroke="Red" stroke-width="1.0"/>
+  </g>
+</svg>

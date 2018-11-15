@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- copyright 2017 John Hull, ASSAIL licensed:
+     https://github.com/ruminations/Licenses -->
+<!DOCTYPE svg [
+  <!ENTITY x_extent "12">
+  <!ENTITY x_view "512">
+  <!ENTITY y_extent "12">
+  <!ENTITY y_view "512">
+  ]>
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     enable-background="new 0 0 &x_view; &y_view;"
+     width="&x_extent;cm" height="&y_extent;cm"
+     viewBox="0 0 &x_view; &y_view;" x="0px"  y="0px">
+  <g id="group_0" transform="translate(256.0,256.0) scale(1.0,-1.0)" >
+    <path id="path_0" d="
+        M    0.0     , 200.0
+        L  190.211303,  61.803399
+        L  117.557050,-161.803399
+        L -117.557050,-161.803399
+        L -190.211303,  61.803399
+        L    0.0     , 200.0
+      "
+      fill="Black" stroke="Black" stroke-width="0.0" stroke-linejoin="miter"/>
+    <circle id="disk_0" cx="0.0" cy="0.0" r="171.611414"
+        fill="#FFFF99" stroke="Black" stroke-width="1.0"/>
+    <circle id="disk_0c" cx="0.0" cy="0.0" r="3"
+        fill="White" stroke="Black" stroke-width="2.0"/>
+    <circle id="disk_1" cx="0.0" cy="148.644566" r="51.355434"
+        fill="#FFFF99" stroke="Black" stroke-width="1.0"/>
+    <circle id="disk_1c" cx="0.0" cy="148.644566" r="3"
+        fill="White" stroke="Black" stroke-width="2.0"/>
+    <circle id="disk_2" cx="141.369383" cy="45.933697" r="51.355434"
+        fill="#FFFF99" stroke="Black" stroke-width="1.0"/>
+    <circle id="disk_2c" cx="141.369382" cy="45.933697" r="3"
+        fill="White" stroke="Black" stroke-width="2.0"/>
+    <circle id="disk_3" cx="-141.369382" cy="45.933697" r="51.355434"
+        fill="#FFFF99" stroke="Black" stroke-width="1.0"/>
+    <circle id="disk_3c" cx="-141.369382" cy="45.933697" r="3"
+        fill="White" stroke="Black" stroke-width="2.0"/>
+    <circle id="disk_4" cx="87.371084" cy="-120.255980" r="51.355434"
+        fill="#FFFF99" stroke="Black" stroke-width="1.0"/>
+    <circle id="disk_4c" cx="87.371084" cy="-120.255980" r="3"
+        fill="White" stroke="Black" stroke-width="2.0"/>
+    <circle id="disk_5" cx="-87.371084" cy="-120.255980" r="51.355434"
+        fill="#FFFF99" stroke="Black" stroke-width="1.0"/>
+    <circle id="disk_5c" cx="-87.371084" cy="-120.255980" r="3"
+        fill="White" stroke="Black" stroke-width="2.0"/>
+    <path id="path_1" d="
+        M    0.0     , 200.0
+        L  190.211303,  61.803399
+        L  117.557050,-161.803399
+        L -117.557050,-161.803399
+        L -190.211303,  61.803399
+        L    0.0     , 200.0
+      "
+      fill="none" stroke="Red" stroke-width="1.0" stroke-linejoin="round"/>
+    <path id="path_2" d="
+        M    0.0     , 212.123374
+        L  201.741317,  65.549727
+        L  124.682990,-171.611414
+        L -124.682990,-171.611414
+        L -201.741317,  65.549727
+        L    0.0     , 212.123374
+      "
+      fill="none" stroke="Gray" stroke-width="1.0" stroke-linejoin="round"/>
+  </g>
+</svg>

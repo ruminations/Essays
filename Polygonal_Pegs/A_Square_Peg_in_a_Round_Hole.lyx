@@ -1,0 +1,4986 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin /home/bodhi/Composition/LyX/Polygonal_Pegs/
+\textclass amsart
+\use_default_options true
+\begin_removed_modules
+figs-within-sections
+\end_removed_modules
+\begin_modules
+theorems-ams
+eqs-within-sections
+graphicboxes
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family rmdefault
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+A Square Peg in a Round Hole
+\end_layout
+
+\begin_layout Author
+John Hull
+\begin_inset Newline newline
+\end_inset
+
+Copyright © 10 April 2017
+\begin_inset Newline newline
+\end_inset
+
+ASSAIL Licensed - see Appendix B
+\end_layout
+
+\begin_layout Abstract
+Today I discovered an interesting web log entry
+\begin_inset CommandInset citation
+LatexCommand cite
+key "weblog entry of Aubrey Jaffer"
+literal "true"
+
+\end_inset
+
+ on the website of Aubrey Jaffer.
+ In Mr.
+ Jaffer I perceive a kindred spirit, and the particular practical problem
+ he examines at the link resonates with my predilections.
+ I love solving constraint systems in service to the fabrication of physical
+ artifacts.
+ I believe that the process involved is the essence that defines the word
+ `design'.
+ True, such processes are nitty gritty details, but without being informed
+ by mastery of those details, all design becomes fatuous.
+\end_layout
+
+\begin_layout Abstract
+In this document I first replicate Mr.
+ Jaffer's analysis of creating a square opening with circular tools in a
+ way that is more understandable to me.
+ Then I alter the optimizing constraint to equate the 
+\emph on
+area
+\emph default
+ of the corner overcuts to the central overcut, in contrast to equating
+ the 
+\emph on
+extent
+\emph default
+ of the two overcuts, as he does.
+ Perhaps the most useful insight extending Mr.
+ Jaffer's effort is the discovery of the invariant 
+\begin_inset Formula $\frac{R}{r}=3$
+\end_inset
+
+ attached to his solution, which makes his ideas very easy to apply in a
+ practical context, without calculation.
+ Next, I apply that insight to 
+\emph on
+minimize
+\emph default
+ the total 
+\emph on
+area
+\emph default
+ of the overcut and 
+\emph on
+minimize
+\emph default
+ and 
+\emph on
+equate
+\emph default
+ the 
+\emph on
+uncut area 
+\emph default
+in the companion problem.
+ Finally, I generalize to an 
+\begin_inset Formula $n$
+\end_inset
+
+-gon peg in a round hole, creating a table of the associated invariants.
+ Mostly, only an understanding of grade school algebra and trigonometry
+ is necessary, although the minimization sections use a little elementary
+ calculus.
+\end_layout
+
+\begin_layout Section
+Summary of the Problem
+\end_layout
+
+\begin_layout Standard
+The problem is to use standard drills with circular profile to make a good
+ approximation to a square opening in some sheet material.
+ The final opening need not be further finished to be servicable, but may
+ be `deburred' with a file to smooth the edges of the opening.
+ When that latter operation is applied, the resulting hole can be said to
+ have some margin 
+\begin_inset Formula $\delta$
+\end_inset
+
+.
+ In either case, we require that a square peg of the specified size will
+ slide without interference into the finished opening.
+ Our fabrication algorithm is:
+\end_layout
+
+\begin_layout Enumerate
+Drill four small holes near the corners of the finished square.
+\end_layout
+
+\begin_layout Enumerate
+Drill a large hole at the center of the square.
+\end_layout
+
+\begin_layout Enumerate
+Optionally, clean up the sides with a file.
+\end_layout
+
+\begin_layout Standard
+Clearly, in the absence of any design constraints, there are an infinity
+ of solutions that will work.
+ The four small holes need not even all be the same size.
+ Many of those solutions grossly overcut every part of the perimeter of
+ the square target opening.
+ There is a subset of solutions (but still infinite) that are better because
+ all intersections of the perimeter of the large drill opening and the perimeter
+ of each of the small drill openings lie on the perimeter of the square,
+ and each corner of the square lies on the perimeter of a small drill opening.
+ We wish to restrict the latter subset to a unique solution by imposing
+ a design constraint.
+\end_layout
+
+\begin_layout Standard
+The mathematical question is thus, what is the radius 
+\begin_inset Formula $r$
+\end_inset
+
+ of the small drill, the radius 
+\begin_inset Formula $R$
+\end_inset
+
+ of the large drill, and the overcut 
+\begin_inset Formula $\delta$
+\end_inset
+
+, when subject to some design constraint that forces those values to be
+ unique.
+ The constraint Mr.
+ Jaffer chose was to equate the maximum overcut of the large drill and the
+ small drill.
+ The clearance is thus 
+\begin_inset Formula $2\cdot\delta$
+\end_inset
+
+, twice the amount of overcut.
+ We later choose to consider the 
+\emph on
+area 
+\emph default
+of overcuts, supposing the resulting balance will yield a better fit.
+\end_layout
+
+\begin_layout Standard
+In what follows, the word `distance' always refers to a positive scalar
+ value, where all scalars are denoted by 
+\begin_inset Formula $italic$
+\end_inset
+
+ case.
+ The word `position' always refers to a two dimensional vector, which may
+ be thought of as a complex number, denoted by 
+\begin_inset Formula $\mathbf{bold}$
+\end_inset
+
+ case.
+ Scalar functional forms are denoted by a 
+\begin_inset Formula $\mathsf{sans\;serif}$
+\end_inset
+
+ font.
+ In most cases, the algebraic manipulations are belabored, as a gesture
+ of courtesy to the math-phobic.
+ If their abundance is intimidating, simply reading the first and last lines
+ of each grouping and accepting that they are equivalent statements of truth
+ suffices.
+\end_layout
+
+\begin_layout Section
+Equation of Overcut Extent 
+\end_layout
+
+\begin_layout Standard
+First of all, it is obvious all linear dimensions scale linearly with the
+ side length 
+\begin_inset Formula $s$
+\end_inset
+
+ of the square.
+ In order to avoid cluttering the equations with factors of two and thereby
+ focus on the problem at hand, we shall use half the side length of the
+ square hole, 
+\begin_inset Formula $h=\frac{s}{2}$
+\end_inset
+
+ as a parameter.
+ Then, when we are done, we will have three numbers, 
+\begin_inset Formula $\frac{r}{h}$
+\end_inset
+
+ , 
+\begin_inset Formula $\frac{R}{h}$
+\end_inset
+
+, and 
+\begin_inset Formula $\frac{\delta}{h}$
+\end_inset
+
+, which are factors that, when multiplied by some actual 
+\begin_inset Formula $s=2h$
+\end_inset
+
+, yield the ideal diameters of the small and large drill, and the total
+ clearance (twice the overcut), repectively.
+ As a practical matter, the ideal values will have to be rounded up, and
+ the centers of the four small holes will have to be shifted suitably if
+ the equality of overcut constraint is to be rigorously realized.
+ We will not solve that secondary problem, for it is dependent on hole size
+ and the common tooling available for execution, both of which are unknown.
+ In practice, the shift likely would be small and neglected.
+ To clarify the algebra, refer to figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Equal-extents"
+
+\end_inset
+
+ which shows the final solution, where the target opening is red.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Wrap figure
+lines 0
+placement o
+overhang 0in
+width "8cm"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/square_peg_round_holes1.svg
+	width 8cm
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Equal-extents"
+
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+Equal overcut extents.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let the center of the square be at the origin: 
+\begin_inset Formula $\mathbf{C}\equiv\left[\,0\;0\,\right]$
+\end_inset
+
+.
+ A corner of the square must be on the perimeter of the small drill's profile.
+ A corner position is 
+\begin_inset Formula $\mathbf{P}=\left[\,h\;h\,\right]$
+\end_inset
+
+.
+ The radius of a circle tangent to both sides of the square at the corner
+ and co-located with the small drill center is 
+\begin_inset Formula $r_{t}=\frac{r}{\sqrt{2}}$
+\end_inset
+
+.
+ The position of the corresponding small hole center is therefore:
+\begin_inset Formula 
+\begin{eqnarray*}
+\hspace{25em}\mathbf{c} & = & \begin{bmatrix}h-r_{t} &  & h-r_{t}\end{bmatrix}\\
+ & = & \begin{bmatrix}h-\frac{r}{\sqrt{2}} &  & h-\frac{r}{\sqrt{2}}\end{bmatrix}
+\end{eqnarray*}
+
+\end_inset
+
+and the overcut is therefore 
+\begin_inset Formula $\delta_{r}=r-r_{t}=r\cdot\left(1-\sqrt{\frac{1}{2}}\right)$
+\end_inset
+
+.
+ The distance from the corner of the square to the intersection of the perimeter
+ of the small hole with the side of the square, due to the right angle at
+ the corner, is therefore just 
+\begin_inset Formula $2\cdot r_{t}=\sqrt{2}\cdot r$
+\end_inset
+
+ and the position of the intersection as a function of 
+\begin_inset Formula $r$
+\end_inset
+
+ is:
+\begin_inset Formula 
+\begin{eqnarray*}
+\hspace{25em}\mathbf{I} & = & \begin{bmatrix}h-\sqrt{2}\cdot r &  & h\end{bmatrix}
+\end{eqnarray*}
+
+\end_inset
+
+This intersection must be the same as the position of the intersection of
+ the perimeter of the large drill with the side of the square.
+ The Pythagorean theorem gives us that position as a function of 
+\begin_inset Formula $R$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{eqnarray*}
+\hspace{25em}\mathbf{I} & = & \begin{bmatrix}\sqrt{R^{2}-h^{2}} &  & h\end{bmatrix}
+\end{eqnarray*}
+
+\end_inset
+
+ The overcut of the large hole is 
+\begin_inset Formula $\delta_{R}=R-h$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The equation relating 
+\begin_inset Formula $r$
+\end_inset
+
+ and 
+\begin_inset Formula $R$
+\end_inset
+
+ can now be expressed by equating 
+\begin_inset Formula $x$
+\end_inset
+
+ component of the two equations for 
+\begin_inset Formula $\mathbf{I}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{eqnarray*}
+\sqrt{R^{2}-h^{2}} & = & h-\sqrt{2}\cdot r\\
+\sqrt{\left(\frac{R}{h}\right)^{2}-1} & = & 1-\sqrt{2}\cdot\frac{r}{h}\\
+\left(\frac{R}{h}\right)^{2}-1 & = & 1-2\sqrt{2}\cdot\frac{r}{h}+2\left(\frac{r}{h}\right)^{2}\\
+\left(\frac{R}{h}\right)^{2} & = & 2\left(1-\sqrt{2}\cdot\frac{r}{h}+\left(\frac{r}{h}\right)^{2}\right)=\left(\sqrt{2}-\frac{r}{h}\right)^{2}+\left(\frac{r}{h}\right)^{2}
+\end{eqnarray*}
+
+\end_inset
+
+Notice the last expression is just the Pythagorean theorem applied to the
+ right triangle in figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Equal-extents"
+
+\end_inset
+
+ with 
+\begin_inset Formula $R$
+\end_inset
+
+ for hypoteneuse, 
+\begin_inset Formula $r$
+\end_inset
+
+ for altitude, and 
+\begin_inset Formula $\sqrt{2}h-r$
+\end_inset
+
+ for base.
+ This is the geometric constraint coincident intersections imply, and it
+ holds for all values of 
+\begin_inset Formula $r$
+\end_inset
+
+ and 
+\begin_inset Formula $R$
+\end_inset
+
+ that produce mutual intersections that are also coincident with the side
+ of the square.
+ More will be said about this in subsequent sections.
+\end_layout
+
+\begin_layout Standard
+Using our design constraint that equates overcuts, we also have:
+\begin_inset Formula 
+\begin{eqnarray}
+R-h & = & r\cdot\left(1-\sqrt{\frac{1}{2}}\right)\nonumber \\
+\frac{R}{h}-1 & = & \frac{r}{h}\cdot\left(1-\sqrt{\frac{1}{2}}\right)\nonumber \\
+\frac{R}{h} & = & \frac{r}{h}\cdot\left(1-\sqrt{\frac{1}{2}}\right)+1\label{eq:equal overcut constraint}
+\end{eqnarray}
+
+\end_inset
+
+yielding the simultaneous system of equations:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left.\begin{array}{ccc}
+\frac{R}{h} & = & \frac{r}{h}\cdot\left(1-\sqrt{\frac{1}{2}}\right)+1\\
+\left(\frac{R}{h}\right)^{2} & = & 2\left(1-\sqrt{2}\cdot\frac{r}{h}+\left(\frac{r}{h}\right)^{2}\right)
+\end{array}\right\} 
+\]
+
+\end_inset
+
+We solve first for 
+\begin_inset Formula $\frac{r}{h}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{eqnarray*}
+\left(\frac{r}{h}\cdot\left(1-\sqrt{\frac{1}{2}}\right)+1\right)^{2} & = & 2\left(1-\sqrt{2}\cdot\frac{r}{h}+\left(\frac{r}{h}\right)^{2}\right)\\
+\left(\frac{r}{h}\cdot\left(1-\sqrt{\frac{1}{2}}\right)\right)^{2}+2\frac{r}{h}\cdot\left(1-\sqrt{\frac{1}{2}}\right)+1 & = & 2-2\sqrt{2}\cdot\frac{r}{h}+2\left(\frac{r}{h}\right)^{2}\\
+\left(\frac{r}{h}\right)^{2}\cdot\left(\frac{3}{2}-\sqrt{2}\right)+\frac{r}{h}\cdot\left(2-\sqrt{2}\right) & = & 1-2\sqrt{2}\cdot\frac{r}{h}+2\left(\frac{r}{h}\right)^{2}\\
+0 & = & 1-\left(2+\sqrt{2}\right)\frac{r}{h}+\left(\frac{1}{2}+\sqrt{2}\right)\left(\frac{r}{h}\right)^{2}
+\end{eqnarray*}
+
+\end_inset
+
+The quadratic formula tells us:
+\begin_inset Formula 
+\begin{eqnarray*}
+\frac{r}{h} & = & \frac{2+\sqrt{2}}{2\left(\frac{1}{2}+\sqrt{2}\right)}\pm\sqrt{\left(\frac{2+\sqrt{2}}{2\left(\frac{1}{2}+\sqrt{2}\right)}\right)^{2}-\frac{1}{\frac{1}{2}+\sqrt{2}}}\\
+ & = & \frac{2+\sqrt{2}}{1+2\sqrt{2}}\pm\sqrt{\left(\frac{2+\sqrt{2}}{1+2\sqrt{2}}\right)^{2}-\frac{2}{1+2\sqrt{2}}}\\
+ & = & \frac{1}{1+2\sqrt{2}}\left(2+\sqrt{2}\pm\sqrt{\left(2+\sqrt{2}\right)^{2}-2\left(1+2\sqrt{2}\right)}\right)\\
+ & = & \frac{1}{1+2\sqrt{2}}\left(2+\sqrt{2}\pm\sqrt{4+4\sqrt{2}-4\sqrt{2}}\right)\\
+ & = & \frac{\left(2+\sqrt{2}\right)\pm2}{1+2\sqrt{2}}\rightarrow\sqrt{2},\;\frac{2}{4+\sqrt{2}}\simeq0.3693980625181293
+\end{eqnarray*}
+
+\end_inset
+
+where we choose the smaller value, which gives a small drill.
+ The large solution would solve the problem by drilling a single hole the
+ diameter of the square's diagonal at the center of the square, eliminating
+ the need for the large drill.
+ That solution has excessive overcut, and, obviously, produces a round hole.
+ Notice the small solution expresses the harmonic mean of 
+\begin_inset Formula $\frac{1}{4}$
+\end_inset
+
+and 
+\begin_inset Formula $\frac{1}{\sqrt{2}}$
+\end_inset
+
+.
+ It is not immediately clear, however, that there is any useful geometric
+ interpretation.
+\end_layout
+
+\begin_layout Standard
+The solution we calculated is twice that found by Mr.
+ Jaffer because 
+\begin_inset Formula $h$
+\end_inset
+
+ is half of 
+\begin_inset Formula $s$
+\end_inset
+
+, and he used 
+\begin_inset Formula $s$
+\end_inset
+
+ in his calculations.
+ Like him, we also seek a diameter, which is the dimension that drills are
+ indexed by, so this value is doubled again when we multiply by 
+\begin_inset Formula $s=2h$
+\end_inset
+
+ to get the diameter.
+ Using the overcut constraint now yields:
+\begin_inset Formula 
+\begin{eqnarray*}
+\frac{R}{h} & = & \frac{r}{h}\cdot\left(1-\sqrt{\frac{1}{2}}\right)+1\\
+ & = & \frac{2}{4+\sqrt{2}}\cdot\left(1-\sqrt{\frac{1}{2}}\right)+1\\
+ & = & \frac{2-\sqrt{2}}{4+\sqrt{2}}+1\\
+ & = & \frac{\sqrt{2}-1}{2\sqrt{2}+1}+1=\frac{3\sqrt{2}}{2\sqrt{2}+1}\simeq1.108194187554388
+\end{eqnarray*}
+
+\end_inset
+
+where again our value is twice that of Mr.
+ Jaffer's because 
+\begin_inset Formula $h$
+\end_inset
+
+ is half of 
+\begin_inset Formula $s$
+\end_inset
+
+.
+ When multiplied by 
+\begin_inset Formula $s=2h$
+\end_inset
+
+, using his exemplar of 
+\begin_inset Formula $s=1.125$
+\end_inset
+
+, we get the same drill diameters as he does.
+ In contrast, he multiplies his numbers by 
+\begin_inset Formula $2s=4h$
+\end_inset
+
+ to get the same diameters.
+ Notice that the proportion 
+\begin_inset Formula $\frac{R}{h}\,:\,\frac{r}{h}=3=\frac{R}{r}$
+\end_inset
+
+ is invariant.
+\end_layout
+
+\begin_layout Standard
+Now 
+\begin_inset Formula $\delta$
+\end_inset
+
+ is the overcut, and Mr.
+ Jaffer does not calculate it.
+ It does, however, tell us how good or bad this approximation is.
+ According to our equations 
+\begin_inset Formula $\frac{\delta}{h}=\frac{\delta_{r}}{h}=\frac{r}{h}\cdot\left(1-\sqrt{\frac{1}{2}}\right)=0.108\cdots=\frac{R}{h}-1=\frac{R-h}{h}=\frac{\delta_{R}}{h}$
+\end_inset
+
+, which is about 
+\begin_inset Formula $5.5\%$
+\end_inset
+
+ of the 
+\emph on
+total
+\emph default
+ side length of the square.
+ This yields a clearance, 
+\begin_inset Formula $2\cdot\delta$
+\end_inset
+
+, of 
+\begin_inset Formula $22\%$
+\end_inset
+
+ of 
+\emph on
+half
+\emph default
+ the side length or 
+\begin_inset Formula $11\%$
+\end_inset
+
+ of the 
+\emph on
+total
+\emph default
+ side length.
+ This is actually a pretty rough hole, but when you are using it to mount
+ some panel gadget with a bezel, it is entirely appropriate.
+\end_layout
+
+\begin_layout Standard
+If you seek a tight fit, then the companion problem that requires the drill
+ perimeters to be inside the square is more suitable, and then final finishing
+ with a file is no longer optional.
+ We can solve that companion problem easily from what we have already done.
+ Let 
+\begin_inset Formula $H$
+\end_inset
+
+ be half the side length of the circumscribing square.
+ All drill perimeters must be tangent to that square.
+ Therefore, 
+\begin_inset Formula $H=R$
+\end_inset
+
+ where 
+\begin_inset Formula $R$
+\end_inset
+
+ is the solution we just calculated for the associated 
+\begin_inset Formula $h$
+\end_inset
+
+ which is not known.
+ The proportion 
+\begin_inset Formula $\frac{r}{h}\,:\,\frac{R}{h}$
+\end_inset
+
+ is invariant, that is 
+\begin_inset Formula $\frac{r}{R}=\frac{1}{3}$
+\end_inset
+
+ for the design constraint that forces equal overcuts, so 
+\begin_inset Formula $r=\frac{r}{R}\cdot R=\frac{R}{3}$
+\end_inset
+
+.
+ From the geometry, we have 
+\begin_inset Formula $H=\left(h-\frac{r}{\sqrt{2}}\right)+r$
+\end_inset
+
+, so 
+\begin_inset Formula $h=H-\frac{R}{3}\left(1-\frac{1}{\sqrt{2}}\right)=H\cdot\frac{4-\sqrt{2}}{6}$
+\end_inset
+
+.
+ The canonical solution to the companion problem is therefore obtained by
+ finding the canonical solution of the original problem with 
+\begin_inset Formula $h=1$
+\end_inset
+
+ and scaling all values by 
+\begin_inset Formula $\frac{h}{H}=\frac{4-\sqrt{2}}{6}$
+\end_inset
+
+.
+ The solution for a specific 
+\begin_inset Formula $H$
+\end_inset
+
+ is then obtained by multiplying all values by 
+\begin_inset Formula $H$
+\end_inset
+
+.
+ The solution to this companion problem is also depicted in figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Equal-extents"
+
+\end_inset
+
+, where the target opening is gray.
+\end_layout
+
+\begin_layout Standard
+It is interesting that the companion problem has no immediately obvious
+ natural design constraint to make the solution unique, for merely requiring
+ tangency does not restrict the solution set.
+ Solving the overcut problem and then mapping the solution to the undercut
+ problem via scaling is a good way to impose a natural constraint that yields
+ a unique solution.
+ This works because of the invariant.
+ Therefore, probably the most important discovery here is the invariant.
+ It is a very easy to remember practical rule of thumb.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Wrap figure
+lines 0
+placement o
+overhang 0in
+width "8cm"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/square_peg_round_holes2.svg
+	width 8cm
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Equal-areas"
+
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+Equal overcut areas.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So, for example, if you wish to make a square hole in a 
+\begin_inset Formula $2\mathsf{x}4$
+\end_inset
+
+ as a socket for a 
+\begin_inset Formula $2\mathsf{x}2$
+\end_inset
+
+, you would first drill four half inch holes tangent to the corners of a
+ 
+\begin_inset Formula $1.5^{\shortparallel}$
+\end_inset
+
+ square, since that is the nominal dimension of a 
+\begin_inset Formula $2\mathsf{x}2$
+\end_inset
+
+.
+ Then you would drill a 
+\begin_inset Formula $1.5^{\shortparallel}$
+\end_inset
+
+ hole in the center and clean up the edges with a wood chisel.
+ The paradigm is a versatile means to make sturdy structures from inexpensive
+ materials.
+\end_layout
+
+\begin_layout Section
+Equation of Overcut Areas
+\end_layout
+
+\begin_layout Standard
+Looking at the image of the previous solution, it seems that the corners
+ overcut disproportionately, that is, there is a sense that the square has
+ `ears'.
+ The perception suggests the constraint of the previous section, equating
+ overcut, errs on the side of making the large hole too small, regarding
+ only aesthetic considerations.
+ What we desire is to have the contributions from each kind of overcut to
+ be equal so that the defects in the opening are visually balanced.
+\end_layout
+
+\begin_layout Standard
+If the small holes were very small, the large hole would protrude excessively
+ and the imbalance would be visually very obvious.
+ If the large hole were nearly tangent, the corner holes would form significant
+ `ears' and the imbalance would be equally obvious.
+ This qualitative analysis makes it clear some median balance point does
+ exist.
+ If we use a design constraint that equates overcut areas for the two different
+ drills, there will be less overcut in the corners and more in the center
+ of an edge.
+ In consequence, if the final shape is smoothed with a file, the sides will
+ bulge a bit, but the closeness of fit in the corners should be better.
+\end_layout
+
+\begin_layout Standard
+Once more, to clarify the algebra, refer to the final solution in figure
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Equal-areas"
+
+\end_inset
+
+.
+ We begin by revisiting the idea of an invariant from the perspective of
+ our geometric constraint that requires coincidence of the intersections
+ of the small and large drill openings with the side of the square.
+ The lowest right triangle in figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Equal-extents"
+
+\end_inset
+
+ nicely expresses this constraint:
+\begin_inset Formula 
+\begin{eqnarray}
+R^{2} & = & r^{2}+\left(\sqrt{2}\cdot h-r\right)^{2}\nonumber \\
+1-\left(\frac{r}{R}\right)^{2} & = & \left(\sqrt{2}\cdot\frac{h}{R}-\frac{r}{R}\right)^{2}\nonumber \\
+\frac{1}{\sqrt{2}}\left(\frac{r}{R}+\sqrt{1-\left(\frac{r}{R}\right)^{2}}\right) & = & \frac{h}{R}\label{eq:geometric constraint}
+\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We have rearranged the relationship to express 
+\begin_inset Formula $\frac{h}{R}$
+\end_inset
+
+ as a function of the invariant 
+\begin_inset Formula $\frac{r}{R}$
+\end_inset
+
+.
+ The solution for a different design constraint will have a different invariant,
+ but it will still satisfy this relationship.
+ The invariant expresses an infinity of possible design constraints as a
+ simple numerical constant with 
+\begin_inset Formula $0<\frac{r}{R}<\frac{1}{\sqrt{2}}$
+\end_inset
+
+.
+ In the previous section, the equal overcut constraint formula 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:equal overcut constraint"
+
+\end_inset
+
+ can be rewritten as 
+\begin_inset Formula $\frac{h}{R}=1-\frac{r}{R}\cdot\left(1-\sqrt{\frac{1}{2}}\right)$
+\end_inset
+
+, and that, combined with the universal geometric contraint 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:geometric constraint"
+
+\end_inset
+
+ for this problem, yields a relationship that may be solved for the invariant:
+\begin_inset Formula 
+\begin{eqnarray*}
+\frac{1}{\sqrt{2}}\left(\frac{r}{R}+\sqrt{1-\left(\frac{r}{R}\right)^{2}}\right) & = & 1-\frac{r}{R}\cdot\left(1-\sqrt{\frac{1}{2}}\right)\\
+\sqrt{1-\left(\frac{r}{R}\right)^{2}} & = & \sqrt{2}-\frac{r}{R}\cdot\sqrt{2}\\
+0 & = & 3\left(\frac{r}{R}\right)^{2}-4\frac{r}{R}\cdot+1
+\end{eqnarray*}
+
+\end_inset
+
+where the reader may easily check that the solutions are 
+\begin_inset Formula $\frac{1}{3}$
+\end_inset
+
+ and 
+\begin_inset Formula $1$
+\end_inset
+
+ with only 
+\begin_inset Formula $\frac{1}{3}$
+\end_inset
+
+ applicable.
+ Feeding that back into either the equal overcut constraint or the geometric
+ constraint, with 
+\begin_inset Formula $h=1,$
+\end_inset
+
+ gives 
+\begin_inset Formula $R=1.108\cdots$
+\end_inset
+
+ and 
+\begin_inset Formula $r=\frac{R}{3}=.369\cdots$
+\end_inset
+
+ as before.
+ In the sequel, we will find a new relationship for 
+\begin_inset Formula $\frac{h}{R}$
+\end_inset
+
+ and use it with the universal geometric constraint 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:geometric constraint"
+
+\end_inset
+
+ to solve for 
+\begin_inset Formula $\frac{r}{R}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+As a preliminary, we find the formula for the area between the perimeter
+ of a circle and a chord.
+ For convenience, we will call that a `lune' although it is really only
+ half of a proper lune.
+ Let 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ be the angle that the chord subtends, in radian measure, and 
+\begin_inset Formula $r$
+\end_inset
+
+ be the radius of the circle.
+ The area of the lune is the difference between the area of the circular
+ sector and the triangle that the chord cuts off from that sector.
+ This is given by:
+\begin_inset Formula 
+\begin{eqnarray*}
+\mathsf{A}_{l}\left(r,\alpha\right) & = & \frac{\alpha}{2\pi}\cdot\pi r^{2}-\frac{1}{2}r\cdot\cos\left(\frac{\alpha}{2}\right)\cdot\left(2r\cdot\sin\left(\frac{\alpha}{2}\right)\right)\\
+ & = & \frac{\alpha}{2}\cdot r^{2}-r^{2}\cdot\cos\left(\frac{\alpha}{2}\right)\cdot\sin\left(\frac{\alpha}{2}\right)\\
+ & = & \frac{r^{2}}{2}\left(\alpha-\sin\left(\alpha\right)\right)=\frac{r^{2}}{2}\left(\alpha-\sqrt{1-\cos^{2}\left(\alpha\right)}\right)=\frac{r^{2}}{2}\left(\alpha-2\cdot\cos\left(\frac{\alpha}{2}\right)\cdot\sin\left(\frac{\alpha}{2}\right)\right)
+\end{eqnarray*}
+
+\end_inset
+
+The total area of the corner overcuts is 
+\begin_inset Formula $8$
+\end_inset
+
+ times this, and for the corner hole, 
+\begin_inset Formula $\alpha=\frac{\pi}{2}$
+\end_inset
+
+, therefore 
+\begin_inset Formula $\mathsf{A}_{r}=8\cdot\mathsf{A}_{l}\left(r,\frac{\pi}{2}\right)=8\left(\frac{\pi}{4}-\frac{1}{2}\right)\cdot r^{2}=2\left(\pi-2\right)\cdot r^{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ be the angle subtended by the chord of the large drill opening.
+ We will use the half angle version of the formula for the lune area because
+ we have the cosine and sine readily available in the geometry.
+ The total area of the overcuts of the large drill is 
+\begin_inset Formula $\mathsf{A}_{R}=4\cdot\mathsf{A}_{l}\left(R,\alpha\right)$
+\end_inset
+
+.
+ The relationship equating areas is thus:
+\begin_inset Formula 
+\begin{eqnarray}
+\mathsf{A}_{r} & = & \mathsf{A}_{R}\nonumber \\
+2\left(\pi-2\right)\cdot r^{2} & = & 2R^{2}\left(\alpha-2\cos\left(\frac{\alpha}{2}\right)\cdot\sin\left(\frac{\alpha}{2}\right)\right)\nonumber \\
+\left(\pi-2\right)\left(\frac{r}{R}\right)^{2} & = & 2\arccos\left(\frac{h}{R}\right)-2\cdot\frac{h}{R}\cdot\frac{h-\sqrt{2}r}{R}\nonumber \\
+2\arccos\left(\frac{h}{R}\right) & = & \left(\pi-2\right)\left(\frac{r}{R}\right)^{2}+2\left(\frac{h}{R}\right)^{2}-2\sqrt{2}\cdot\frac{h}{R}\cdot\frac{r}{R}\label{eq:base}\\
+\frac{h}{R} & = & \cos\left(\frac{1}{2}\left(\pi-2\right)\left(\frac{r}{R}\right)^{2}+\left(\frac{h}{R}\right)^{2}-\sqrt{2}\cdot\frac{h}{R}\cdot\frac{r}{R}\right)\nonumber 
+\end{eqnarray}
+
+\end_inset
+
+We may gain some geometric insight into the nature of the solutions satisfying
+ this relationship by performing two substitutions which yield the equivalent
+ relations: 
+\begin_inset Formula 
+\begin{eqnarray*}
+u & = & \cos\left(\left(\frac{\pi}{2}-1\right)v^{2}+u^{2}-\sqrt{2}\cdot u\cdot v\right)\\
+ &  & \quad|\;u,\,v=\frac{h}{R},\,\frac{r}{R}\\
+\frac{1}{\sqrt{2}}\left(v+\sqrt{1-v^{2}}\right) & = & \cos\left(\left(\frac{\pi}{2}-1\right)v^{2}+\frac{1}{2}\left(v+\sqrt{1-v^{2}}\right)^{2}-\left(v+\sqrt{1-v^{2}}\right)\cdot v\right)\\
+ &  & \quad|\;u=\frac{1}{\sqrt{2}}\left(v+\sqrt{1-v^{2}}\right)\\
+\frac{1}{\sqrt{2}}\left(v+\sqrt{1-v^{2}}\right) & = & \cos\left(\left(\frac{\pi}{2}-1\right)v^{2}+\frac{1}{2}\left(1+2v\sqrt{1-v^{2}}\right)-\left(v^{2}+v\sqrt{1-v^{2}}\right)\right)\\
+\frac{1}{\sqrt{2}}\left(v+\sqrt{1-v^{2}}\right) & = & \cos\left(\left(\frac{\pi}{2}-2\right)v^{2}+\frac{1}{2}\right)
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Wrap figure
+lines 0
+placement o
+overhang 0in
+width "8cm"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/square_peg_round_holes3.svg
+	width 8cm
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Comparison-of-solutions"
+
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+Comparison of solutions.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+The last equation expresses the intersection of the cosine function using
+ a parabolic domain mapping with a skewed square root function when plotted
+ in a Cartesian coordinate system.
+ In arriving at this formula, we performed two substitutions.
+ The first was simply to clarify the algebra.
+ The second expresses the universal geometric constraint given by equation
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:geometric constraint"
+
+\end_inset
+
+ relating the first substitution variables.
+ This final relationship yields values for the invariant under the design
+ constraint that equates overcut areas.
+ There are two solutions: 
+\begin_inset Formula $v\simeq0.32464171480530516$
+\end_inset
+
+ or 
+\begin_inset Formula $v\simeq0.83421552624000018$
+\end_inset
+
+ which may be found using numerical methods, for example, Newton's method.
+ Only the small value is in the domain of 
+\begin_inset Formula $\frac{r}{R}$
+\end_inset
+
+ that produces geometrically meaningful results.
+ Feeding that value back into the geometric constraint, with 
+\begin_inset Formula $h=1$
+\end_inset
+
+, we find 
+\begin_inset Formula $R=1.113134341796548$
+\end_inset
+
+ and 
+\begin_inset Formula $r=R\cdot\frac{r}{R}=0.361369841529506$
+\end_inset
+
+.
+ The invariant 
+\begin_inset Formula $v\equiv\frac{r}{R}$
+\end_inset
+
+ is no longer an integer, or even a nice number.
+\end_layout
+
+\begin_layout Standard
+From a practical perspective, this solution is identical to the first solution.
+ Working out the solution was, however, a useful exercise as a prelude to
+ minimizing the total area of all overcuts.
+ Moreover, the images could not have been made without solving the problem.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Comparison-of-solutions"
+
+\end_inset
+
+ shows a comparison of the two solutions.
+ The green lines show the outline of the previous solution.
+ The increase in large radius is negligable, despite the visibly distinct
+ difference in the small radii.
+ Nevertheless, the difference between overcuts is also negligable.
+ Thus, ultimately we find that Mr.
+ Jaffer's original solution is a superior practical solution.
+\end_layout
+
+\begin_layout Section
+Minimizing Total Overcut
+\end_layout
+
+\begin_layout Standard
+Another approach that comes to mind is summing the overcuts and minimizing
+ the total area.
+ This solution has the practical value of minimizing the material that needs
+ to be removed to form the hole, which is a quantitative metric for closeness
+ of fit.
+ The first step is to rearrange equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:base"
+
+\end_inset
+
+ so that it expresses a function giving the total area.
+ Notice signs change, since this is now a 
+\emph on
+sum
+\emph default
+ of areas, not an 
+\emph on
+equation
+\emph default
+ of areas:
+\begin_inset Formula 
+\begin{eqnarray*}
+\mathsf{A}_{t}\left(\frac{h}{R},\,\frac{r}{R}\right) & = & 2\arccos\left(\frac{h}{R}\right)-2\left(\frac{h}{R}\right)^{2}+2\sqrt{2}\cdot\frac{h}{R}\cdot\frac{r}{R}+\left(\pi-2\right)\left(\frac{r}{R}\right)^{2}\\
+\mathsf{A}_{t}\left(u,\,v\right) & = & 2\arccos\left(u\right)-2u^{2}+2\sqrt{2}\cdot u\cdot v+\left(\pi-2\right)v^{2}\\
+ &  & \quad|\;u,\,v=\frac{h}{R},\,\frac{r}{R}
+\end{eqnarray*}
+
+\end_inset
+
+As before, some substitutions will clarify and simplify:
+\begin_inset Formula 
+\begin{eqnarray*}
+\mathsf{A}_{t}\left(v\right) & = & 2\arccos\left(\frac{1}{\sqrt{2}}\left(v+\sqrt{1-v^{2}}\right)\right)-\left(v+\sqrt{1-v^{2}}\right)^{2}+2\left(v+\sqrt{1-v^{2}}\right)\cdot v+\left(\pi-2\right)v^{2}\\
+ &  & \quad|\;u=\frac{1}{\sqrt{2}}\left(v+\sqrt{1-v^{2}}\right)\\
+\mathsf{A}_{t}\left(w\right) & = & 2\arccos\left(\frac{w}{\sqrt{2}}\right)-w^{2}+w\cdot\left(w+\sqrt{2-w^{2}}\right)+\left(\frac{\pi}{4}-\frac{1}{2}\right)\left(w+\sqrt{2-w^{2}}\right)^{2}\\
+ &  & \quad|\;w=v+\sqrt{1-v^{2}}\;\Rightarrow\;v=\frac{1}{2}\left(w\pm\sqrt{2-w^{2}}\right)\\
+ & = & 2\arccos\left(\frac{w}{\sqrt{2}}\right)+w\cdot\sqrt{2-w^{2}}+\left(\frac{\pi}{4}-\frac{1}{2}\right)\left(w+\sqrt{2-w^{2}}\right)^{2}
+\end{eqnarray*}
+
+\end_inset
+
+The formula 
+\begin_inset Formula $v=\frac{1}{2}\left(w\pm\sqrt{2-w^{2}}\right)$
+\end_inset
+
+ may be derived from the second substitution by rearrangement and solving
+ for 
+\begin_inset Formula $v$
+\end_inset
+
+ using the quadratic formula (see 
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "sec:Appendix-A"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ Since 
+\begin_inset Formula $v$
+\end_inset
+
+ is positive, we use the positive root.
+ These substitutions greatly simplify computing the derivative:
+\begin_inset Formula 
+\begin{eqnarray*}
+\mathsf{A}_{t}^{\shortmid}\left(w\right) & = & -\frac{2}{\sqrt{2-w^{2}}}+\sqrt{2-w^{2}}-\frac{w^{2}}{\sqrt{2-w^{2}}}+\left(\frac{\pi}{2}-1\right)\left(w+\sqrt{2-w^{2}}\right)\left(1-\frac{w}{\sqrt{2-w^{2}}}\right)\\
+ & = & -\frac{2}{\sqrt{2-w^{2}}}+\sqrt{2-w^{2}}-\frac{w^{2}}{\sqrt{2-w^{2}}}+\left(\frac{\pi}{2}-1\right)\left(\sqrt{2-w^{2}}-\frac{w^{2}}{\sqrt{2-w^{2}}}\right)\\
+ & = & -\frac{2}{\sqrt{2-w^{2}}}+\frac{\pi}{2}\left(\sqrt{2-w^{2}}-\frac{w^{2}}{\sqrt{2-w^{2}}}\right)\\
+ & = & -\frac{2}{\sqrt{2-w^{2}}}+\frac{\pi}{2}\left(\frac{2-w^{2}-w^{2}}{\sqrt{2-w^{2}}}\right)\\
+ & = & \frac{\pi\left(1-w^{2}\right)-2}{\sqrt{2-w^{2}}}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The zeros of this derivative mark extrema of the area function.
+ They may be found by solving 
+\begin_inset Formula $0=-\pi w^{2}+(\pi-2)$
+\end_inset
+
+, yielding two zeros: 
+\begin_inset Formula $w=\pm\sqrt{\frac{\pi-2}{\pi}}\simeq\pm0.6028102749890869$
+\end_inset
+
+.
+ I looked up this sequence of digits in the Online Encylopedia of Integer
+ Sequences
+\begin_inset CommandInset citation
+LatexCommand cite
+key "OEIS website"
+literal "true"
+
+\end_inset
+
+, but there are no matching entries.
+ Since we have a symbolic form, we will follow it through the inverse sequence
+ of substitutions to obtain a symbolic expression for the invariant.
+ From our definition of 
+\begin_inset Formula $w$
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "sec:Appendix-A"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ shows:
+\begin_inset Formula 
+\begin{eqnarray*}
+v\equiv\frac{r}{R} & = & \frac{1}{2}\left(w\pm\sqrt{2-w^{2}}\right)\\
+ & = & \frac{1}{2}\left(\pm\sqrt{\frac{\pi-2}{\pi}}\pm\sqrt{2-\left(\pm\sqrt{\frac{\pi-2}{\pi}}\right)^{2}}\right)\\
+ & = & \frac{1}{2}\left(\pm\sqrt{\frac{\pi-2}{\pi}}\pm\sqrt{2-\frac{\pi-2}{\pi}}\right)\\
+ & = & \frac{1}{2\sqrt{\pi}}\left(\pm\sqrt{\pi-2}\pm\sqrt{\pi+2}\right)
+\end{eqnarray*}
+
+\end_inset
+
+The permutations of sign yield 
+\begin_inset Formula $v\simeq\pm0.33824706729482124$
+\end_inset
+
+ and 
+\begin_inset Formula $v\simeq\pm0.9410573422839081$
+\end_inset
+
+.
+ Only the positive small value is consistent with the geometry.
+ Thus, 
+\begin_inset Formula $R=1.1054550830781478$
+\end_inset
+
+, and 
+\begin_inset Formula $r=0.37391693987733643$
+\end_inset
+
+.
+ Unexpectedly, this has a larger small drill than the previous solutions.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Minimal-area"
+
+\end_inset
+
+ shows what it looks like in comparison to the equal overcut extent solution.
+\end_layout
+
+\begin_layout Section
+The Companion Problem Revisited
+\end_layout
+
+\begin_layout Standard
+So we went through a lot of work here due to some nebulous insult to our
+ sense of aesthetics, only to discover that the only other obvious alternatives
+ for a design constraint produce essentially indistinguishable results.
+ What is intriguing is the stability of the solution under really quite
+ varied heuristic conceptions of optimization.
+ Nevertheless, something still appears aesthetically wrong with the images,
+ irrespective of the original utilitarian motive that inspired Mr.
+ Jaffer.
+ Looking at figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Equal-extents"
+
+\end_inset
+
+, this time focussing on the gray target square of the companion problem,
+ we can see that the large drill size is fixed by the size of the square
+ in that companion problem.
+ It is therefore a new invariant and may replace the universal geometric
+ constraint.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Wrap figure
+lines 23
+placement o
+overhang 0in
+width "8cm"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/square_peg_round_holes4.svg
+	width 8cm
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Minimal-area"
+
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+Minimal overcut area.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+What can vary is the small drill size, subject to the constraint that it
+ is tangent to both sides of the square near the corner.
+ Depending on the size we choose, the red square's corner will either be
+ in the uncut material at the corner, on the perimeter of the small drill
+ opening, or somewhere interior to the small drill opening.
+ If we abandon the universal geometric constraint that requires the intersection
+ between drill openings to lie on the red square, which is now optional
+ instead of given, we need some new constraint to force a unique solution.
+ There are two obvious ones that are distinct from the previous analyses:
+\end_layout
+
+\begin_layout Enumerate
+Equate the uncut area at the corners to the uncut area between the points
+ of tangency.
+\end_layout
+
+\begin_layout Enumerate
+Minimize the total uncut area.
+\end_layout
+
+\begin_layout Standard
+In order to calculate these areas, we need to know the two points of intersectio
+n of the two drill openings so we may calculate the area of the overlapping
+ lunes.
+ Then the total uncut area is just the area of the square, minus the area
+ of the large drill, minus four times the area of the small drill, plus
+ the area of the four lunes.
+ The corner uncut area may be split out by computing rectangular areas bounded
+ by the tangencies and small drill centers, then adding the area of one
+ small drill opening, which is equal to the area of the four sectors missing
+ from the rectangular sum.
+ The corner area is then the total area of the square minus this latter
+ sum.
+ More simply, the corner uncut area is just the area of the square circumscribin
+g the small drill opening minus the area of the small drill.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Wrap figure
+lines 23
+placement o
+overhang 0in
+width "8cm"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/triangular_peg_round_holes.svg
+	width 8cm
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Triangular-peg"
+
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $n$
+\end_inset
+
+-gon peg: 
+\begin_inset Formula $n=3$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Looking at the figure again, what offends the aesthetic sensibility is now
+ apparent: the uncut area at the corner is too small in comparison to the
+ flanking uncut areas between tangent points.
+ The small drill needs to be made 
+\emph on
+larger
+\emph default
+, while maintaining tangency to the gray square.
+ When this is done, the corners of the red square will lie in uncut material,
+ interfering with the square peg.
+ When used as a solution to Mr.
+ Jaffer's original problem, finishing the corners with a few strokes of
+ a square file is necessary, but the result is a tight fit in the corners
+ and smaller clearance everywhere, providing a mechanically more robust
+ construction.
+\end_layout
+
+\begin_layout Standard
+Since, very likely, the result of these calculations will also be indistinguisha
+ble, I will defer them to some later time (possibly never) and proceed with
+ the more interesting generalization.
+\end_layout
+
+\begin_layout Section
+An 
+\begin_inset Formula $n$
+\end_inset
+
+-gon Peg in a Round Hole
+\end_layout
+
+\begin_layout Standard
+The stability of the solutions suggests that Mr.
+ Jaffer's original heuristic is the heuristic of choice for generalization
+ to an 
+\begin_inset Formula $n$
+\end_inset
+
+ sided polygon.
+ It certainly is the simplest to analytically apply.
+ It is clear that as 
+\begin_inset Formula $n$
+\end_inset
+
+ increases the approximation will improve, however, if one wishes to insert
+ a peg with more sides than say Gauss' beloved 
+\begin_inset Formula $17$
+\end_inset
+
+-gon, the simplest approach is probably to just use a single round hole.
+ In fact, the essence of this observation is the basis of Archimedes method
+ for estimating the value of 
+\begin_inset Formula $\pi$
+\end_inset
+
+.
+ Polygonal pegs with eight sides or less are the most likely targets for
+ this generalization.
+ The equilateral triangular hole captures the essential details for calculating
+ all the rest, and so we will illustrate with a triangle.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Triangular-peg"
+
+\end_inset
+
+ shows the final solution for the case 
+\begin_inset Formula $n=3$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\alpha=\frac{2\pi}{n}$
+\end_inset
+
+ radians be the central angle subtended by one side of the given 
+\begin_inset Formula $n$
+\end_inset
+
+-gon.
+ Let 
+\begin_inset Formula $\beta$
+\end_inset
+
+ be the angle between two adjacent sides.
+ Then 
+\begin_inset Formula $\beta=\pi-\alpha=\pi\frac{n-2}{n}$
+\end_inset
+
+.
+ As before, let 
+\begin_inset Formula $s$
+\end_inset
+
+ be the given side length and 
+\begin_inset Formula $h$
+\end_inset
+
+ be half of that so that 
+\begin_inset Formula $s\equiv2h$
+\end_inset
+
+.
+ Let the distance from the centroid to the center of a side be 
+\begin_inset Formula $a$
+\end_inset
+
+ and the distance from the centroid to a vertex be 
+\begin_inset Formula $b$
+\end_inset
+
+.
+ From the geometric definition of a cosine and a sine, 
+\begin_inset Formula $b=\frac{h}{\cos\left(\frac{\beta}{2}\right)}$
+\end_inset
+
+ and 
+\begin_inset Formula $a=b\cdot\sin\left(\frac{\beta}{2}\right)=h\cdot\tan\left(\frac{\beta}{2}\right)$
+\end_inset
+
+.
+ As before, we will find the formulas for 
+\begin_inset Formula $R$
+\end_inset
+
+, the radius of the large hole that overcuts the edge, and 
+\begin_inset Formula $r$
+\end_inset
+
+, the radius of the small hole that overcuts the edge.
+ As before, we will require the intersection of the two openings to lie
+ on the 
+\begin_inset Formula $n$
+\end_inset
+
+-gon perimeter, providing a geometric constraint.
+ As before, we require the polygonal vertices to lie on the perimeter of
+ a small drill opening.
+ As before, we will equate the extents of the two overcuts as a design constrain
+t.
+ The universal geometric constraint for an 
+\begin_inset Formula $n$
+\end_inset
+
+-gon thus becomes:
+\begin_inset Formula 
+\begin{eqnarray*}
+R^{2} & = & a^{2}+\left(h-2r\cdot\cos\left(\frac{\beta}{2}\right)\right)^{2}\\
+R^{2} & = & \left(h\cdot\tan\left(\frac{\beta}{2}\right)\right)^{2}+\left(h-2r\cdot\cos\left(\frac{\beta}{2}\right)\right)^{2}\\
+0 & = & \left(\frac{h}{R}\cdot\tan\left(\frac{\beta}{2}\right)\right)^{2}+\left(\frac{h}{R}-2\frac{r}{R}\cdot\cos\left(\frac{\beta}{2}\right)\right)^{2}-1\\
+0 & = & \left(\frac{h}{R}\right)^{2}\left(\tan^{2}\left(\frac{\beta}{2}\right)+1\right)-4\frac{h}{R}\cdot\frac{r}{R}\cdot\cos\left(\frac{\beta}{2}\right)+\left(4\left(\frac{r}{R}\right)^{2}\cdot\cos^{2}\left(\frac{\beta}{2}\right)-1\right)
+\end{eqnarray*}
+
+\end_inset
+
+Notice this is more complex than the square case, where the right angles
+ in the geometry caused 
+\begin_inset Formula $a$
+\end_inset
+
+ to equal 
+\begin_inset Formula $h$
+\end_inset
+
+.
+ It is, nevertheless, a quadratic equation in 
+\begin_inset Formula $\frac{h}{R}$
+\end_inset
+
+, so the quadratic formula gives us 
+\begin_inset Formula $\frac{h}{R}$
+\end_inset
+
+ as a function of the invariant 
+\begin_inset Formula $\frac{r}{R}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{eqnarray*}
+\frac{h}{R} & = & 2\frac{r}{R}\cdot\frac{\cos\left(\frac{\beta}{2}\right)}{\tan^{2}\left(\frac{\beta}{2}\right)+1}\pm\sqrt{\left(2\frac{r}{R}\cdot\frac{\cos\left(\frac{\beta}{2}\right)}{\tan^{2}\left(\frac{\beta}{2}\right)+1}\right)^{2}-\frac{4\left(\frac{r}{R}\right)^{2}\cdot\cos^{2}\left(\frac{\beta}{2}\right)-1}{\tan^{2}\left(\frac{\beta}{2}\right)+1}}\\
+ & = & 2\frac{r}{R}\cdot\cos^{3}\left(\frac{\beta}{2}\right)\pm\sqrt{\left(2\frac{r}{R}\cdot\cos^{3}\left(\frac{\beta}{2}\right)\right)^{2}-4\left(\frac{r}{R}\right)^{2}\cdot\cos^{4}\left(\frac{\beta}{2}\right)+\cos^{2}\left(\frac{\beta}{2}\right)}\\
+ & = & 2\frac{r}{R}\cdot\cos\left(\frac{\beta}{2}\right)\left(\cos^{2}\left(\frac{\beta}{2}\right)\pm\sqrt{\cos^{4}\left(\frac{\beta}{2}\right)-\cos^{2}\left(\frac{\beta}{2}\right)+\left(2\frac{r}{R}\right)^{-2}}\right)\\
+ & = & 2\frac{r}{R}\cdot\cos\left(\frac{\beta}{2}\right)\left(\cos^{2}\left(\frac{\beta}{2}\right)\pm\sqrt{\left(2\frac{r}{R}\right)^{-2}-\cos^{2}\left(\frac{\beta}{2}\right)\cdot\sin^{2}\left(\frac{\beta}{2}\right)}\right)\\
+ & = & 2\frac{r}{R}\cdot\cos\left(\frac{\beta}{2}\right)\left(\cos^{2}\left(\frac{\beta}{2}\right)\pm\sqrt{\frac{1}{4}\left(\frac{r}{R}\right)^{-2}-\frac{1}{4}\sin^{2}\left(\beta\right)}\right)\\
+ & = & \cos\left(\frac{\beta}{2}\right)\left(2\frac{r}{R}\cdot\cos^{2}\left(\frac{\beta}{2}\right)\pm\sqrt{1-\left(\frac{r}{R}\right)^{2}\cdot\sin^{2}\left(\beta\right)}\right)
+\end{eqnarray*}
+
+\end_inset
+
+If you use 
+\begin_inset Formula $\beta=\frac{\pi}{2}$
+\end_inset
+
+ for the square, you will find that this gives exactly the same relationship
+ as equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:geometric constraint"
+
+\end_inset
+
+.
+ The design constraint equating the extent of the overcuts becomes:
+\begin_inset Formula 
+\begin{eqnarray*}
+R-a & = & r-r\cdot\sin\left(\frac{\beta}{2}\right)\\
+R-h\cdot\tan\left(\frac{\beta}{2}\right) & = & r\left(1-\sin\left(\frac{\beta}{2}\right)\right)\\
+\cos\left(\frac{\beta}{2}\right)-\frac{h}{R}\cdot\sin\left(\frac{\beta}{2}\right) & = & \frac{r}{R}\left(\cos\left(\frac{\beta}{2}\right)-\cos\left(\frac{\beta}{2}\right)\cdot\sin\left(\frac{\beta}{2}\right)\right)\\
+\frac{h}{R}\cdot\sin\left(\frac{\beta}{2}\right) & = & \cos\left(\frac{\beta}{2}\right)-\frac{r}{R}\left(\cos\left(\frac{\beta}{2}\right)-\cos\left(\frac{\beta}{2}\right)\cdot\sin\left(\frac{\beta}{2}\right)\right)\\
+\frac{h}{R} & = & \cot\left(\frac{\beta}{2}\right)-\frac{r}{R}\left(\cot\left(\frac{\beta}{2}\right)-\cos\left(\frac{\beta}{2}\right)\right)
+\end{eqnarray*}
+
+\end_inset
+
+It is a little easier this time to see that 
+\begin_inset Formula $\beta=\frac{\pi}{2}$
+\end_inset
+
+ gives the same relationship as before for the case of a square.
+ Thus the equation defining the invariant 
+\begin_inset Formula $\frac{r}{R}$
+\end_inset
+
+ for the 
+\begin_inset Formula $n$
+\end_inset
+
+-gon is:
+\size small
+
+\begin_inset Formula 
+\begin{eqnarray*}
+\cos\left(\frac{\beta}{2}\right)\left(2\frac{r}{R}\cdot\cos^{2}\left(\frac{\beta}{2}\right)\pm\sqrt{1-\left(\frac{r}{R}\right)^{2}\cdot\sin^{2}\left(\beta\right)}\right) & = & \cot\left(\frac{\beta}{2}\right)-\frac{r}{R}\left(\cot\left(\frac{\beta}{2}\right)-\cos\left(\frac{\beta}{2}\right)\right)\\
+\pm\cos\left(\frac{\beta}{2}\right)\cdot\sqrt{1-\left(\frac{r}{R}\right)^{2}\cdot\sin^{2}\left(\beta\right)} & = & \cot\left(\frac{\beta}{2}\right)-\frac{r}{R}\left(\cot\left(\frac{\beta}{2}\right)-\cos\left(\frac{\beta}{2}\right)\cdot\left(1-2\cdot\cos^{2}\left(\frac{\beta}{2}\right)\right)\right)\\
+\cos^{2}\left(\frac{\beta}{2}\right)\cdot\left(1-\left(\frac{r}{R}\right)^{2}\cdot\sin^{2}\left(\beta\right)\right) & = & \left(\cot\left(\frac{\beta}{2}\right)-\frac{r}{R}\left(\cot\left(\frac{\beta}{2}\right)-\cos\left(\frac{\beta}{2}\right)\cdot\left(\sin^{2}\left(\frac{\beta}{2}\right)-\cos^{2}\left(\frac{\beta}{2}\right)\right)\right)\right)^{2}\\
+\cos^{2}\left(\frac{\beta}{2}\right)\cdot\sin^{2}\left(\frac{\beta}{2}\right)\cdot\left(1-\left(\frac{r}{R}\right)^{2}\cdot\sin^{2}\left(\beta\right)\right) & = & \left(\cos\left(\frac{\beta}{2}\right)-\frac{r}{R}\left(\cos\left(\frac{\beta}{2}\right)+\cos\left(\frac{\beta}{2}\right)\cdot\sin\left(\frac{\beta}{2}\right)\cdot\cos\left(\beta\right)\right)\right)^{2}\\
+\frac{1}{4}\sin^{2}\left(\beta\right)\cdot\left(1-\left(\frac{r}{R}\right)^{2}\cdot\sin^{2}\left(\beta\right)\right) & = & \left(\cos\left(\frac{\beta}{2}\right)-\frac{r}{R}\left(\cos\left(\frac{\beta}{2}\right)+\frac{1}{2}\sin\left(\beta\right)\cdot\cos\left(\beta\right)\right)\right)^{2}\\
+\sin^{2}\left(\beta\right)\cdot\left(1-\left(\frac{r}{R}\right)^{2}\cdot\sin^{2}\left(\beta\right)\right) & = & \left(2\cos\left(\frac{\beta}{2}\right)-\frac{r}{R}\left(2\cos\left(\frac{\beta}{2}\right)+\frac{1}{2}\sin\left(2\beta\right)\right)\right)^{2}\\
+\sin^{2}\left(\beta\right)\cdot\left(1-\left(\frac{r}{R}\right)^{2}\cdot\sin^{2}\left(\beta\right)\right) & = & 4\cos^{2}\left(\frac{\beta}{2}\right)+\left(\frac{r}{R}\right)^{2}\left(2\cos\left(\frac{\beta}{2}\right)+\frac{1}{2}\sin\left(2\beta\right)\right)^{2}\\
+ &  & \qquad-2\frac{r}{R}\left(4\cos^{2}\left(\frac{\beta}{2}\right)+\cos\left(\frac{\beta}{2}\right)\cdot\sin\left(2\beta\right)\right)\\
+-\left(\frac{r}{R}\right)^{2}\left(\left(2\cos\left(\frac{\beta}{2}\right)+\frac{1}{2}\sin\left(2\beta\right)\right)^{2}+\sin^{4}\left(\beta\right)\right) & = & -\frac{r}{R}\left(8\cos^{2}\left(\frac{\beta}{2}\right)+2\cos\left(\frac{\beta}{2}\right)\cdot\sin\left(2\beta\right)\right)+4\cos^{2}\left(\frac{\beta}{2}\right)-\sin^{2}\left(\beta\right)\\
+\left(\frac{r}{R}\right)^{2}\left(\left(2\cos\left(\frac{\beta}{2}\right)+\frac{1}{2}\sin\left(2\beta\right)\right)^{2}+\sin^{4}\left(\beta\right)\right) & = & \frac{r}{R}\left(8\cos^{2}\left(\frac{\beta}{2}\right)+2\cos\left(\frac{\beta}{2}\right)\cdot\sin\left(2\beta\right)\right)-4\cos^{2}\left(\frac{\beta}{2}\right)+\sin^{2}\left(\beta\right)\\
+\left(\frac{r}{R}\right)^{2}\left(\left(2\cos\left(\frac{\beta}{2}\right)+\frac{1}{2}\sin\left(2\beta\right)\right)^{2}+\sin^{4}\left(\beta\right)\right) & = & \frac{r}{R}\left(2\cos\left(\frac{\beta}{2}\right)\cdot\left(4\cos\left(\frac{\beta}{2}\right)+\sin\left(2\beta\right)\right)\right)-4\cos^{4}\left(\frac{\beta}{2}\right)
+\end{eqnarray*}
+
+\end_inset
+
+
+\size default
+The final equation is a quadratic equation in the invariant 
+\begin_inset Formula $\frac{r}{R}$
+\end_inset
+
+ with coefficients that depend on 
+\begin_inset Formula $\beta=\pi-\alpha=\pi\frac{n-2}{n}$
+\end_inset
+
+.
+ Therefore, given 
+\begin_inset Formula $n$
+\end_inset
+
+, that is, given a regular polygon with a specified number of sides, the
+ coefficients are numerically determined, and in consequence of the quadratic
+ relation, the invariant is determined.
+ I ran the coefficients of the penultimate equation through Wolfram Alpha
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Wolfram Alpha website"
+literal "true"
+
+\end_inset
+
+, asking for simplification.
+ The final simple form of the constant term was returned, while the linear
+ term final simplification is obvious, and is the only useful improvement
+ offered by Wolfram Alpha.
+ Wolfram Alpha does not provide any useful simplification of the quadratic
+ term.
+\end_layout
+
+\begin_layout Standard
+To summarize, the algorithm for calculating a solution for an 
+\begin_inset Formula $n$
+\end_inset
+
+-gon with side length 
+\begin_inset Formula $s=2h$
+\end_inset
+
+ is therefore:
+\end_layout
+
+\begin_layout Enumerate
+Calculate 
+\begin_inset Formula $\beta=\pi\frac{n-2}{n}$
+\end_inset
+
+, the angle between adjacent sides in radians.
+\end_layout
+
+\begin_layout Enumerate
+Calculate the coefficients of the quadratic form:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\mathsf{a}\left(\beta\right)=\left(2\cos\left(\frac{\beta}{2}\right)+\frac{1}{2}\sin\left(2\beta\right)\right)^{2}+\sin^{4}\left(\beta\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\mathsf{b}\left(\beta\right)=2\cos\left(\frac{\beta}{2}\right)\cdot\left(4\cos\left(\frac{\beta}{2}\right)+\sin\left(2\beta\right)\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\mathsf{c}\left(\beta\right)=4\cos^{4}\left(\frac{\beta}{2}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Find the small solution of the quadratic form 
+\begin_inset Formula $0=\mathsf{a}\left(\beta\right)\cdot\left(\frac{r}{R}\right)^{2}-\mathsf{b}\left(\beta\right)\cdot\left(\frac{r}{R}\right)+\mathsf{c}\left(\beta\right)$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{r}{R}=\frac{\mathsf{b}\left(\beta\right)}{2\mathsf{a}\left(\beta\right)}-\sqrt{\left(\frac{\mathsf{b}\left(\beta\right)}{2\mathsf{a}\left(\beta\right)}\right)^{2}-\frac{\mathsf{c}\left(\beta\right)}{\mathsf{a}\left(\beta\right)}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Calculate 
+\begin_inset Formula $\frac{h}{R}=\cos\left(\frac{\beta}{2}\right)\left(2\frac{r}{R}\cdot\cos^{2}\left(\frac{\beta}{2}\right)+\sqrt{1-\left(\frac{r}{R}\right)^{2}\cdot\sin^{2}\left(\beta\right)}\right)$
+\end_inset
+
+, which is the large solution of the universal geometric constraint 
+\begin_inset Formula $R^{2}=\left(h\cdot\tan\left(\frac{\beta}{2}\right)\right)^{2}+\left(h-2r\cdot\cos\left(\frac{\beta}{2}\right)\right)^{2}$
+\end_inset
+
+implied by the geometry, the Pythagorean theorem, and the quadratic formula.
+\end_layout
+
+\begin_layout Enumerate
+Calculate 
+\begin_inset Formula $R=\frac{R}{h}\cdot h=\frac{R}{h}\cdot\frac{s}{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $r=\frac{r}{R}\cdot R$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Calculate the distance of the small drill center from the centroid 
+\begin_inset Formula $b-r=\frac{h}{\cos\left(\frac{\beta}{2}\right)}-r=\frac{s}{2\cos\left(\frac{\beta}{2}\right)}-r$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+A short table of values follows, assuming 
+\begin_inset Formula $h=1$
+\end_inset
+
+.
+ I have included degenerate cases, just for fun.
+ The calculations were performed by a short Python script.
+ Quadratic form coefficients are written as the formula produces them, that
+ is, they have not been simplified to integral surds or smaller integers.
+ The quadratic form, as well as 
+\begin_inset Formula $a$
+\end_inset
+
+ and 
+\begin_inset Formula $b$
+\end_inset
+
+, are omitted when the coefficients do not have a simple symbolic form.
+ It is interesting that the second solution for 
+\begin_inset Formula $\frac{r}{R}$
+\end_inset
+
+ is unity in all cases.
+ The second solution implies drilling just a single circular clearance hole.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\size footnotesize
+\begin_inset Tabular
+<lyxtabular version="3" rows="19" columns="9">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $n$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\alpha$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\beta$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $b$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $a$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+quadratic form
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\frac{r}{R}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $R$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $r$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\frac{2}{0}\pi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\frac{-2}{0}\pi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\frac{2}{1}\pi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\frac{-1}{1}\pi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\frac{1}{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\frac{1}{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $0=0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\frac{2}{2}\pi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\frac{0}{2}\pi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $4\left(\frac{r}{R}\right)^{2}-8\frac{r}{R}+4=0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $1,\,1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $3$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\frac{2}{3}\pi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\frac{1}{3}\pi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\frac{2}{\sqrt{3}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\frac{1}{\sqrt{3}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\frac{21}{4}\left(\frac{r}{R}\right)^{2}-\frac{15}{2}\frac{r}{R}+\frac{9}{4}=0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $1,\,\frac{3}{7}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $0.734809$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $0.314918$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $4$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\frac{1}{2}\pi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\frac{1}{2}\pi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\frac{\sqrt{2}}{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\frac{1}{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $3\left(\frac{r}{R}\right)^{2}-4\frac{r}{R}+1=0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $1,\,\frac{1}{3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $1.108194$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $0.369398$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\frac{2}{5}\pi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\frac{3}{5}\pi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\sqrt{\frac{8}{5-\sqrt{5}}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\sqrt{1+\frac{2}{\sqrt{5}}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\frac{15-\sqrt{5}}{8}\left(\frac{r}{R}\right)^{2}-\frac{15-3\sqrt{5}}{4}\frac{r}{R}+\frac{15-5\sqrt{5}}{8}=0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $1,\,0.299254$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $1.459814$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $0.436855$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $6$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\frac{1}{3}\pi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\frac{2}{3}\pi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\sqrt{3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\frac{7-2\sqrt{3}}{4}\left(\frac{r}{R}\right)^{2}-\frac{1-\sqrt{3}}{2}\frac{r}{R}+\frac{1}{4}=0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $1,\,0.282814$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $1.800262$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $0.509139$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $7$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\frac{2}{7}\pi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\frac{5}{7}\pi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $ $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $ $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $ $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $1,\,0.273525$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $2.134335$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $0.583794$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $8$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\frac{\pi}{4}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\frac{3}{4}\pi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\sqrt{\frac{4}{2-\sqrt{2}}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $1+\sqrt{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $ $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $1,\,0.267732$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $2.464438$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $0.659808$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $9$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\frac{2}{9}\pi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\frac{7}{9}\pi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $ $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $ $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $ $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $1,\,0.263862$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $2.791904$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $0.736677$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $10$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\frac{1}{5}\pi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\frac{4}{5}\pi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\frac{4}{\sqrt{5}-1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\sqrt{5+2\sqrt{5}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $ $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $1,\,0.261144$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $3.117530$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $0.814123$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $11$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\frac{2}{11}\pi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\frac{9}{11}\pi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $ $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $ $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $ $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $1,\,0.259158$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $3.441819$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $0.891976$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $12$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\frac{1}{6}\pi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\frac{5}{6}\pi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\sqrt{\frac{4}{2-\sqrt{3}}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $2+\sqrt{3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $ $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $1,\,0.257663$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $3.765107$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $0.970129$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $13$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\frac{2}{13}\pi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\frac{11}{13}\pi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $ $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $ $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $ $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $1,\,0.256508$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $4.087627$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $1.048510$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $14$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\frac{1}{7}\pi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\frac{6}{7}\pi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $ $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $ $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $ $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $1,\,0.255597$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $4.409544$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $1.127067$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $15$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\frac{2}{15}\pi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\frac{13}{15}\pi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $ $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $ $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $ $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $1,\,0.254866$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $4.730979$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $1.205764$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $16$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\frac{1}{8}\pi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\frac{7}{8}\pi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\sqrt{\frac{4}{\sqrt{2-\sqrt{2+\sqrt{2}}}}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\sqrt{\frac{2+\sqrt{2+\sqrt{2}}}{\sqrt{2-\sqrt{2+\sqrt{2}}}}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $ $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $1,\,0.254269$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $5.052022$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $1.284573$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $17$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\frac{2}{17}\pi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\frac{15}{17}\pi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $ $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $ $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $ $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $1,\,0.253776$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $5.372743$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $1.363475$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Wrap figure
+lines 0
+placement o
+overhang 0in
+width "8cm"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/pentagonal_peg_round_holes.svg
+	width 8cm
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Pentagonal-peg"
+
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+Pentagonal peg in a round hole.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since the table assumes a fixed side length, the area of the polygon increases
+ with 
+\begin_inset Formula $n$
+\end_inset
+
+, and so do 
+\begin_inset Formula $R$
+\end_inset
+
+ and 
+\begin_inset Formula $r$
+\end_inset
+
+.
+ If you want to get a feel for how they change relatively, then the values
+ need to be divided by the semi-perimeter which is just 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ Alternatively, just look at how the invariant 
+\begin_inset Formula $\frac{r}{R}$
+\end_inset
+
+ changes.
+\end_layout
+
+\begin_layout Standard
+Although the geometric meaning restricts the solutions to integral 
+\begin_inset Formula $n$
+\end_inset
+
+, the invariant equation is a continuous function in 
+\begin_inset Formula $\beta$
+\end_inset
+
+ and 
+\begin_inset Formula $\frac{r}{R}$
+\end_inset
+
+, and so the general solution space is the intersection of a surface in
+ three dimensions with the 
+\begin_inset Formula $\beta,\frac{r}{R}$
+\end_inset
+
+ plane.
+ This is called a `level set'.
+ The geometrically meaningful solutions are those where 
+\begin_inset Formula $\beta=\pi\frac{n-2}{n}$
+\end_inset
+
+.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Pentagonal-peg"
+
+\end_inset
+
+ shows the solution for a pentagonal peg.
+\end_layout
+
+\begin_layout Standard
+The invariant 
+\begin_inset Formula $\frac{r}{R}$
+\end_inset
+
+ is assymptotic toward zero.
+ Therefore, the level set coordinate 
+\begin_inset Formula $\frac{r}{R}$
+\end_inset
+
+ will pass through all of the harmonic fractions as 
+\begin_inset Formula $n$
+\end_inset
+
+ increases, supposing for the moment that 
+\begin_inset Formula $n$
+\end_inset
+
+ is now continuous, not discrete.
+ We see so far that only 
+\begin_inset Formula $1$
+\end_inset
+
+ and 
+\begin_inset Formula $\frac{1}{3}$
+\end_inset
+
+ are included among the geometrically meaningful solutions, that is, solutions
+ that are harmonic fractions and 
+\begin_inset Formula $n$
+\end_inset
+
+ is also integral.
+ The fraction 
+\begin_inset Formula $\frac{1}{2}$
+\end_inset
+
+ is missing.
+ This raises an interesting question: are any other harmonic fraction solutions
+ geometrically meaningful? If so, what is the sequence of values for 
+\begin_inset Formula $n$
+\end_inset
+
+ that produce them? This is what mathematics is all about - wonder.
+ Calculation and problem solving are simply means to explore our wonder.
+ Mastery of those skills is necessary, but ultimately, they are important
+ only because there are interesting questions to wonder about.
+\end_layout
+
+\begin_layout Section
+Epilogue
+\end_layout
+
+\begin_layout Standard
+Only two values of 
+\begin_inset Formula $n$
+\end_inset
+
+ in the table produce a rational value of 
+\begin_inset Formula $\frac{r}{R}$
+\end_inset
+
+, specifically 
+\begin_inset Formula $n=3$
+\end_inset
+
+ and 
+\begin_inset Formula $n=4$
+\end_inset
+
+.
+ Whether there are more beyond the table is unknown.
+ In all cases, the geometry implies another circle, one tangent to the small
+ drill openings and concentric with the large drill opening.
+ That raised the interesting question of whether any of those inscibed circles
+ are in rational proportion.
+ Of the values in the table, only 
+\begin_inset Formula $n=3$
+\end_inset
+
+ yields such a rational proportion and it is 
+\begin_inset Formula $\frac{5}{3}r$
+\end_inset
+
+.
+ That immediately suggested to me the possibility of using the ratios as
+ gear ratios.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Planetary-gears"
+
+\end_inset
+
+ depicts the resulting planetary gear train.
+ The red outline is the solution to the triangular peg problem, and it coincides
+ with the pitch circles of the ring gear and the darker blue planet gears.
+ The pitch circle of the copper color sun gear is tangent to the pitch circles
+ of the darker blue planet gears.
+ Gear clearance was chosen to be 
+\begin_inset Formula $5\%$
+\end_inset
+
+ in order to accomodate printing registration variance.
+ The undercut on small pinions is calculated using the machinist's `cheat',
+ instead of the mathematically `correct' trochoidal curve.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Wrap figure
+lines 0
+placement o
+overhang 0in
+width "7cm"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/planetary_gears.svg
+	width 7cm
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Planetary-gears"
+
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+Planetary gears.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Not shown is a spider coupling the lighter blue planet gears to the copper
+ colored sun gear.
+ The casing outline is 
+\emph on
+not
+\emph default
+ a solution to the triangular peg problem, since all solutions to the triangular
+ peg problem are uniform scalings of one another.
+ The casing outline is the result of adding a uniform margin to the pitch
+ circle line.
+ Using a solution for the casing outline either creates a casing that interferes
+ with the darker blue planet gears, or is grossly oversized.
+\end_layout
+
+\begin_layout Standard
+As it happens, I'd been looking for some inspiration for creating an iconic
+ logo for my document license.
+ Although it is a bit busy, this image seemed like it might make a good
+ starting point.
+ I decluttered it a bit by removing some transparency, reducing other 
+\family typewriter
+transparencies
+\family default
+, and subduing the colors.
+ Finally, I embossed a copyright symbol on the principal gears.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:ASSAIL-license-logo"
+
+\end_inset
+
+ shows the final result.
+ The busyness now has more of the character of a watermark.
+\end_layout
+
+\begin_layout Standard
+In addition to files related to producing this document, the repository
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ruminations repository"
+literal "true"
+
+\end_inset
+
+ contains the file `
+\family typewriter
+polygonal_pegs.py
+\family default
+'.
+ That file is self contained and holds a class definition that encapsulates
+ the calculations in this document as class properties.
+ It was instrumental in producing the table of values for small polygons.
+ The file's text may be copied and pasted into the Python interpreter command
+ line, facilitating easy calculation of specific cases that may interest
+ the reader.
+ So, for example, if you are the reincarnation of Gauss, the first thing
+ you would do is type `
+\family typewriter
+p=PolygonalPeg(17)
+\family default
+', and then you would type `
+\family typewriter
+p.r'
+\family default
+, `
+\family typewriter
+p.R
+\family default
+', `
+\family typewriter
+p.intersection
+\family default
+', `
+\family typewriter
+p.r_R
+\family default
+' (calculates 
+\begin_inset Formula $\frac{r}{R}$
+\end_inset
+
+), et cetera.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/ASSAIL_logo.svg
+	width 8cm
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:ASSAIL-license-logo"
+
+\end_inset
+
+ASSAIL license logo.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Appendix-A"
+
+\end_inset
+
+Appendix A
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+w & = & v+\sqrt{1-v^{2}}\\
+\left(w-v\right)^{2} & = & 1-v^{2}\\
+2v^{2}-2wv+w^{2}-1 & = & 0\qquad\Rightarrow\\
+v & = & \frac{w}{2}\pm\sqrt{\left(\frac{w}{2}\right)^{2}-\frac{w^{2}-1}{2}}\\
+v & = & \frac{1}{2}\left(w\pm\sqrt{w^{2}-2w^{2}+2}\right)\\
+v & = & \frac{1}{2}\left(w\pm\sqrt{2-w^{2}}\right)
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 1cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Appendix B: License
+\end_layout
+
+\begin_layout Subsection*
+The ASSAIL License:
+\end_layout
+
+\begin_layout Standard
+This license is copyright 2015, ASSAIL licensed, see
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset space \qquad{}
+\end_inset
+
+https://github.com/ruminations/Licenses.
+\end_layout
+
+\begin_layout Standard
+for details.
+\end_layout
+
+\begin_layout Subsection*
+Academic Simple Self Archived Investigation License
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MM
+\begin_inset space \hfill{}
+\end_inset
+
+0: This license applies to documents that historically have been distributed
+ in print, and contemporaneously are distributed on the internet in digital
+ form, hereinafter referred to by the word 'document'.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MM
+\begin_inset space \hfill{}
+\end_inset
+
+1: The author or authors of any document subject to this license remain
+ the copyright holders of that document for the purpose of this license.
+ Thus, license use is irrevocable, and any assignation must include a compatible
+ exclusion.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MM
+\begin_inset space \hfill{}
+\end_inset
+
+2: Excerpted text, not to exceed 5% of the document, must include a credit
+ referring to the full document.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MM
+\begin_inset space \hfill{}
+\end_inset
+
+3: Each excerpted image must include a credit referring to the full document.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MM
+\begin_inset space \hfill{}
+\end_inset
+
+4: Excerpted data for use in other work, must include a credit referring
+ to the full document.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MM
+\begin_inset space \hfill{}
+\end_inset
+
+5: Copying and distribution of the full document is permitted, subject to
+ restrictions 6, 7, 8, and 9.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MM
+\begin_inset space \hfill{}
+\end_inset
+
+6: Distribution requiring a reader to pay any fee for access is forbidden.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MM
+\begin_inset space \hfill{}
+\end_inset
+
+7: Distribution requiring a reader to register for access is forbidden.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MM
+\begin_inset space \hfill{}
+\end_inset
+
+8: Distribution requiring a reader to show any institutional identification
+ for access is forbidden.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MM
+\begin_inset space \hfill{}
+\end_inset
+
+9: Distribution failing to provide access to the full document is forbidden.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MM
+\begin_inset space \hfill{}
+\end_inset
+
+10: Distribution of print copies may accommodate restriction 9 by a printed
+ reference to a digital resource.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MM
+\begin_inset space \hfill{}
+\end_inset
+
+11: License invocation is achieved by placing this license text in an appendix,
+ and citing it with the copyright notice as at the head of this license
+ document.
+ 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MM
+\begin_inset VSpace 2cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "1"
+key "weblog entry of Aubrey Jaffer"
+literal "true"
+
+\end_inset
+
+http://voluntocracy.blogspot.ca/2016/03/make-square-opening-by-drilling-five.html
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "2"
+key "Wolfram Alpha website"
+literal "true"
+
+\end_inset
+
+https://www.wolframalpha.com
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "3"
+key "OEIS website"
+literal "true"
+
+\end_inset
+
+https://oeis.org
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "4"
+key "ruminations repository"
+literal "true"
+
+\end_inset
+
+https://github.com/ruminations/Essays/tree/master/Polygonal_Pegs
+\end_layout
+
+\end_body
+\end_document

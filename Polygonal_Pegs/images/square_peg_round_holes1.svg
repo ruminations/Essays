@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- copyright 2017 John Hull, ASSAIL licensed:
+     https://github.com/ruminations/Licenses -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+  <!ENTITY x_extent "12">
+  <!ENTITY x_view "512">
+  <!ENTITY y_extent "12">
+  <!ENTITY y_view "512">
+  ]>
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     enable-background="new 0 0 &x_view; &y_view;"
+     width="&x_extent;cm" height="&y_extent;cm"
+     viewBox="0 0 &x_view; &y_view;" x="0px"  y="0px">
+  <g id="group_0" transform="translate(256.0,256.0) scale(1.0,-1.0)" >
+    <rect id="rect_0" x="-200.0" y="-200.0" width="400.0" height="400.0"
+        fill="Black" stroke="Black" stroke-width="0.0"/>
+    <circle id="disk_0" cx="0.0" cy="0.0" r="221.638838"
+        fill="#FFFF99" stroke="Black" stroke-width="1.0"/>
+    <circle id="disk_0c" cx="0.0" cy="0.0" r="3"
+        fill="White" stroke="Black" stroke-width="2.0"/>
+    <circle id="disk_1" cx="147.759225" cy="147.759225" r="73.879613"
+        fill="#FFFF99" stroke="Black" stroke-width="1.0"/>
+    <circle id="disk_1c" cx="147.759225" cy="147.759225" r="3"
+        fill="White" stroke="Black" stroke-width="2.0"/>
+    <circle id="disk_2" cx="-147.759225" cy="-147.759225" r="73.879613"
+        fill="#FFFF99" stroke="Black" stroke-width="1.0"/>
+    <circle id="disk_2c" cx="-147.759225" cy="-147.759225" r="3"
+        fill="White" stroke="Black" stroke-width="2.0"/>
+    <circle id="disk_3" cx="-147.759225" cy="147.759225" r="73.879613"
+        fill="#FFFF99" stroke="Black" stroke-width="1.0"/>
+    <circle id="disk_3c" cx="-147.759225" cy="147.759225" r="3"
+        fill="White" stroke="Black" stroke-width="2.0"/>
+    <circle id="disk_4" cx="147.759225" cy="-147.759225" r="73.879613"
+        fill="#FFFF99" stroke="Black" stroke-width="1.0"/>
+    <circle id="disk_4c" cx="147.759225" cy="-147.759225" r="3"
+        fill="White" stroke="Black" stroke-width="2.0"/>
+    <text id="text_0" text-anchor="start"
+      font-family="Arial" font-size="15.0"
+      transform="translate(-15.0,-15.0) scale(1.0,-1.0)"
+      fill="Black" stroke-width="0.0">C</text>
+    <text id="text_0" text-anchor="start"
+      font-family="Arial" font-size="15.0"
+      transform="translate(157.759225,137.759225) scale(1.0,-1.0)"
+      fill="Black" stroke-width="0.0">c</text>
+    <text id="text_0" text-anchor="start"
+      font-family="Arial" font-size="15.0"
+      transform="translate(185.0,185.0) scale(1.0,-1.0)"
+      fill="Black" stroke-width="0.0">P</text>
+    <text id="text_0" text-anchor="start"
+      font-family="Arial" font-size="15.0"
+      transform="translate(95.0,185.0) scale(1.0,-1.0)"
+      fill="Black" stroke-width="0.0">I</text>
+    <text id="text_0" text-anchor="start"
+      font-family="Arial" font-size="15.0"
+      transform="translate(128.0,175.0) scale(1.0,-1.0)"
+      fill="Black" stroke-width="0.0">r</text>
+    <text id="text_0" text-anchor="start"
+      font-family="Arial" font-size="15.0"
+      transform="translate(153.0,175.0) scale(1.0,-1.0)"
+      fill="Black" stroke-width="0.0">r</text>
+    <text id="text_0" text-anchor="start"
+      font-family="Arial" font-size="10.0"
+      transform="translate(158.0,172.0) scale(1.0,-1.0)"
+      fill="Black" stroke-width="0.0">t</text>
+    <text id="text_0" text-anchor="start"
+      font-family="Arial" font-size="15.0"
+      transform="translate(30.0,95.0) scale(1.0,-1.0)"
+      fill="Black" stroke-width="0.0">R</text>
+    <text id="text_0" text-anchor="start"
+      font-family="Arial" font-size="15.0"
+      transform="translate(-15.0,95.0) scale(1.0,-1.0)"
+      fill="Black" stroke-width="0.0">h</text>
+    <text id="text_0" text-anchor="start"
+      font-family="Arial" font-size="15.0"
+      transform="translate(-15.0,205.0) scale(1.0,-1.0)"
+      fill="Black" stroke-width="0.0">δ</text>
+    <rect id="rect_1" x="-200.0" y="-200.0" width="400.0" height="400.0"
+        fill="none" stroke="Red" stroke-width="1.0"/>
+    <rect id="rect_1" x="-221.638838" y="-221.638838" width="443.277676" height="443.277676"
+        fill="none" stroke="Gray" stroke-width="1.0"/>
+    <path id="path_0" d="
+        M   0.0     ,  0.0
+        L 147.759225,147.759225
+        L  95.518450,200.0
+        L   0.0     ,  0.0
+        L   0.0     ,200.0
+        L  95.518450,200.0
+        M 147.759225,147.759225
+        L 147.759225,200.0
+      "
+      fill="none" stroke="Blue" stroke-width="1.0" stroke-linejoin="round"/>
+    <path id="path_1" d="
+        M   0.0,200.0
+        L   0.0,221.638838
+      "
+      fill="none" stroke="Green" stroke-width="1.0" stroke-linejoin="round"/>
+    <circle id="disk_1" cx="147.759225" cy="147.759225" r="52.240775"
+        fill="none" stroke="Blue" stroke-width="1.0"/>
+  </g>
+</svg>

@@ -1,0 +1,315 @@
+<?xml version="1.0"?>
+<!-- copyright 2017 John Hull, ASSAIL licensed:
+     https://github.com/ruminations/Licenses -->
+<!DOCTYPE svg [
+  <!ENTITY copper "Chocolate"><!-- looks like copper in gradient -->
+  <!ENTITY gold   "Gold" >
+  <!ENTITY cobalt "Indigo" ><!-- looks like cobalt in gradient -->
+  <!ENTITY steel  "SteelBlue" >
+  <!ENTITY ring   "#FFFF33" >
+  <!ENTITY case   "#FFFF66" >
+  <!ENTITY base_empty    "#FFFF99">
+  <!ENTITY base_fill     "url(#light1)">
+  <!ENTITY base_stroke   "url(#light1)">
+  <!ENTITY sun_fill      "url(#light0)">
+  <!ENTITY sun_stroke    "url(#light0)">
+  <!ENTITY sun_opacity   "1.0"><!-- .5 shows hidden gear -->
+  <!ENTITY planet_fill   "url(#light2)">
+  <!ENTITY planet_stroke "url(#light2)">
+  <!ENTITY text_fill     "url(#light3)">
+  <!ENTITY text_stroke   "url(#light3)">
+  <!ENTITY under_fill    "url(#light0)">
+  <!ENTITY under_stroke  "url(#light0)">
+  <!-- use 55 for icon canvas, 550 magnifies 10x -->
+  <!-- set scale=viewsize/55 to magnify in Browser view -->
+  <!ENTITY viewsize  "550" >
+  <!ENTITY scale      "10" >
+]>
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     enable-background="new 0 0 &viewsize; &viewsize;"
+     width="&viewsize;px" height="&viewsize;px"
+     viewBox="0 0 &viewsize; &viewsize;" x="0px"  y="0px">
+  <g id="stub_metric_Gear_Set_(16, 30)_pa_25"
+     transform="scale(&scale;,&scale;)">
+		<defs>
+		  <radialGradient id="light0" gradientUnits="userSpaceOnUse"
+		                  cx="0" cy="0" r="15" >
+		    <stop offset="0%" stop-color="&gold;" />
+		    <stop offset="100%" stop-color="&copper;" />
+		  </radialGradient>
+		</defs>
+		<defs>
+		  <radialGradient id="light1" gradientUnits="userSpaceOnUse"
+		                  cx="0" cy="0" r="15" >
+		    <stop offset="0%" stop-color="&copper;" />
+		    <stop offset="70%" stop-color="&gold;" />
+		    <stop offset="100%" stop-color="&ring;" />
+		  </radialGradient>
+		</defs>
+		<defs>
+		  <radialGradient id="light2" gradientUnits="userSpaceOnUse"
+		                  cx="0" cy="0" r="9" >
+		    <stop offset="0%" stop-color="&steel;" />
+		    <stop offset="100%" stop-color="&cobalt;" />
+		  </radialGradient>
+		</defs>
+		<defs>
+		  <radialGradient id="light3" gradientUnits="userSpaceOnUse"
+		                  cx="0" cy="0" r="9" >
+		    <stop offset="0%" stop-color="&cobalt;" />
+		    <stop offset="100%" stop-color="&steel;" />
+		  </radialGradient>
+		</defs>
+	  <path id="path_0" d="
+        M 35.612490,14.0
+        A  8.25 , 8.25  0 1 0 19.387510,14.0
+        A 15.75 ,15.75  0 0 0 11.752412,27.224377
+        A  8.25 , 8.25  0 1 0 19.864902,41.275623
+        A 15.75 ,15.75  0 0 0 35.135098,41.275623
+        A  8.25 , 8.25  0 1 0 43.247588,27.224377
+        A 15.75 ,15.75  0 0 0 35.612490,14.0
+      "
+      fill="&base_empty;" stroke="&base_empty;" stroke-width="0"
+      stroke-linejoin="round"/>
+    <defs>
+		  <g id="unichr(0x00A9)" transform="scale(1.0,-1.0)">
+		  <circle cx="0" cy="0" stroke-width="1.5"
+		          fill="none" r="9.25"/>
+		  <path id="path_1" d="
+		      M 3.0901669, 2.8558620
+		      A 3.8196601, 4.8586827 0 1 1  0.0     ,-4.8586827
+		      A 4.8586827, 4.8586827 0 0 1 3.9307569,-2.8558620
+		      A 4.8586827, 6.1803399 0 1 0 3.9307569,2.8558620
+		      L 3.0901669, 2.8558620
+		    "
+		    stroke-width="0" stroke-linejoin="round"/>
+		  </g>
+		</defs>
+    <defs>
+      <g id="Cog_0_-14" transform="none">
+        <defs>
+          <path id="Cog_0_-14_tooth" stroke="&base_empty;"
+             stroke-width="0" d="
+               M 11.38602,-2.34505
+               A 0.74644 0.74644 0 0 0 12.06102,-1.75129
+               A 2.65278 2.65278 0 0 1 12.38194,-1.71454
+               A 5.54686 5.54686 0 0 1 13.77952,-1.24847
+               A 8.98323 8.98323 0 0 1 14.89468,-0.58729
+               A 0.23299 0.23299 0 0 1 14.99461,-0.40222
+               A 15.00000 15.00000 0 0 1 14.99461,0.40222
+               A 0.23299 0.23299 0 0 1 14.89468,0.58729
+               A 8.98323 8.98323 0 0 1 13.77952,1.24847
+               A 5.54686 5.54686 0 0 1 12.38194,1.71454
+               A 2.65278 2.65278 0 0 1 12.06102,1.75129
+               A 0.74644 0.74644 0 0 0 11.38602,2.34505
+               L 11.38602,-2.34505"
+            fill="&base_empty;" stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </defs>
+        <circle cx="0" cy="0" stroke="&base_stroke;" stroke-width="0"
+              fill="&base_fill;" r="15.75"/>
+        <circle cx="0" cy="0" stroke="&base_empty;" stroke-width="0"
+              fill="&base_empty;" r="11.625"/>
+        <use xlink:href="#Cog_0_-14_tooth" transform="rotate( 0.00000)" />
+        <use xlink:href="#Cog_0_-14_tooth" transform="rotate(25.71429)" />
+        <use xlink:href="#Cog_0_-14_tooth" transform="rotate(51.42857)" />
+        <use xlink:href="#Cog_0_-14_tooth" transform="rotate(77.14286)" />
+        <use xlink:href="#Cog_0_-14_tooth" transform="rotate(102.85714)" />
+        <use xlink:href="#Cog_0_-14_tooth" transform="rotate(128.57143)" />
+        <use xlink:href="#Cog_0_-14_tooth" transform="rotate(154.28571)" />
+        <use xlink:href="#Cog_0_-14_tooth" transform="rotate(180.00000)" />
+        <use xlink:href="#Cog_0_-14_tooth" transform="rotate(205.71429)" />
+        <use xlink:href="#Cog_0_-14_tooth" transform="rotate(231.42857)" />
+        <use xlink:href="#Cog_0_-14_tooth" transform="rotate(257.14286)" />
+        <use xlink:href="#Cog_0_-14_tooth" transform="rotate(282.85714)" />
+        <use xlink:href="#Cog_0_-14_tooth" transform="rotate(308.57143)" />
+        <use xlink:href="#Cog_0_-14_tooth" transform="rotate(334.28571)" />
+      </g>
+    </defs>
+    <use xlink:href="#Cog_0_-14"
+      transform="translate(27.5,27.5) rotate(12.85714)" />
+    <defs>
+      <g id="Cog_1_4" transform="none" opacity=".5">
+        <defs>
+          <path id="Cog_1_4_tooth" stroke="&planet_stroke;"
+            stroke-width="0" d="
+               M 1.56387,-1.03437
+               A 0.41250 0.41250 0 0 0 2.06971,-0.88249
+               L 3.12633,-1.33301
+               A 0.79241 0.79241 0 0 1 3.24560,-1.36317
+               A 1.58482 1.58482 0 0 1 4.05691,-1.27919
+               A 4.00146 4.00146 0 0 1 5.22763,-0.48416
+               A 0.00000 0.00000 0 0 1 5.22763,-0.48416
+               A 5.25000 5.25000 0 0 1 5.22763,0.48416
+               A 0.00000 0.00000 0 0 1 5.22763,0.48416
+               A 4.00146 4.00146 0 0 1 4.05691,1.27919
+               A 1.58482 1.58482 0 0 1 3.24560,1.36317
+               A 0.79241 0.79241 0 0 1 3.12633,1.33301
+               L 2.06971,0.88249
+               A 0.41250 0.41250 0 0 0 1.56387,1.03437
+               L 1.56387,-1.03437"
+            fill="&planet_fill;" stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </defs>
+        <use xlink:href="#Cog_1_4_tooth" transform="rotate( 0.0)" />
+        <use xlink:href="#Cog_1_4_tooth" transform="rotate(90.0)" />
+        <use xlink:href="#Cog_1_4_tooth" transform="rotate(180.0)" />
+        <use xlink:href="#Cog_1_4_tooth" transform="rotate(270.0)" />
+        <circle cx="0" cy="0" stroke="&planet_stroke;" stroke-width="0"
+              fill="&planet_fill;" r="1.875"/>
+        <circle cx="0" cy="0" stroke="&base_empty;" stroke-width="0"
+              fill="&base_empty;" r="1.125"/>
+      </g>
+    </defs>
+    <use xlink:href="#Cog_1_4"
+      transform="translate(27.5,27.5) rotate( 0.0)" />
+    <defs>
+      <g id="Cog_2_5" transform="none" opacity=".5">
+        <defs>
+          <path id="Cog_2_5_tooth" stroke="&under_stroke;"
+            stroke-width="0" d="
+               M 2.52850,-1.23160
+               A 0.40000 0.40000 0 0 0 3.01713,-1.02814
+               L 4.02125,-1.37031
+               A 0.99051 0.99051 0 0 1 4.17273,-1.39680
+               A 1.98102 1.98102 0 0 1 5.02652,-1.25443
+               A 4.36871 4.36871 0 0 1 6.06364,-0.60507
+               A 0.31652 0.31652 0 0 1 6.17566,-0.38253
+               A 6.18750 6.18750 0 0 1 6.17566,0.38253
+               A 0.31652 0.31652 0 0 1 6.06364,0.60507
+               A 4.36871 4.36871 0 0 1 5.02652,1.25443
+               A 1.98102 1.98102 0 0 1 4.17273,1.39680
+               A 0.99051 0.99051 0 0 1 4.02125,1.37031
+               L 3.01713,1.02814
+               A 0.40000 0.40000 0 0 0 2.52850,1.23160
+               L 2.52850,-1.23160"
+            fill="&under_fill;" stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </defs>
+        <use xlink:href="#Cog_2_5_tooth" transform="rotate( 0.0)" />
+        <use xlink:href="#Cog_2_5_tooth" transform="rotate(72.0)" />
+        <use xlink:href="#Cog_2_5_tooth" transform="rotate(144.0)" />
+        <use xlink:href="#Cog_2_5_tooth" transform="rotate(216.0)" />
+        <use xlink:href="#Cog_2_5_tooth" transform="rotate(288.0)" />
+        <circle cx="0" cy="0" stroke="&under_stroke;" stroke-width="0"
+              fill="&under_fill;" r="2.8125"/>
+        <circle cx="0" cy="0" stroke="&base_empty;" stroke-width="0"
+              fill="&base_empty;" r="2.0625"/>
+      </g>
+    </defs>
+    <use xlink:href="#Cog_2_5"
+      transform="translate(27.5,35.93750) rotate(162.0)" />
+    <use xlink:href="#Cog_2_5"
+      transform="translate(34.80709,23.28125) rotate(-54.0)" />
+    <use xlink:href="#Cog_2_5"
+      transform="translate(20.19291,23.28125) rotate(90.0)" />
+    <defs>
+      <g id="Cog_1_10" transform="none" opacity="&sun_opacity;">
+        <defs>
+          <path id="Cog_1_10_tooth" stroke="&sun_stroke;"
+            stroke-width="0" d="
+               M 7.30595,-1.69502
+               A 0.38438 0.38438 0 0 0 7.74889,-1.40367
+               L 8.36057,-1.51447
+               A 1.98102 1.98102 0 0 1 8.66804,-1.52182
+               A 3.96205 3.96205 0 0 1 9.85725,-1.18095
+               A 6.63646 6.63646 0 0 1 10.76105,-0.65965
+               A 0.23950 0.23950 0 0 1 10.86472,-0.47264
+               A 10.87500 10.87500 0 0 1 10.86472,0.47264
+               A 0.23950 0.23950 0 0 1 10.76105,0.65965
+               A 6.63646 6.63646 0 0 1 9.85725,1.18095
+               A 3.96205 3.96205 0 0 1 8.66804,1.52182
+               A 1.98102 1.98102 0 0 1 8.36057,1.51447
+               L 7.74889,1.40367
+               A 0.38438 0.38438 0 0 0 7.30595,1.69502
+               L 7.30595,-1.69502"
+            fill="&sun_fill;" stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </defs>
+        <use xlink:href="#Cog_1_10_tooth" transform="rotate( 0.0)" />
+        <use xlink:href="#Cog_1_10_tooth" transform="rotate(36.0)" />
+        <use xlink:href="#Cog_1_10_tooth" transform="rotate(72.0)" />
+        <use xlink:href="#Cog_1_10_tooth" transform="rotate(108.0)" />
+        <use xlink:href="#Cog_1_10_tooth" transform="rotate(144.0)" />
+        <use xlink:href="#Cog_1_10_tooth" transform="rotate(180.0)" />
+        <use xlink:href="#Cog_1_10_tooth" transform="rotate(216.0)" />
+        <use xlink:href="#Cog_1_10_tooth" transform="rotate(252.0)" />
+        <use xlink:href="#Cog_1_10_tooth" transform="rotate(288.0)" />
+        <use xlink:href="#Cog_1_10_tooth" transform="rotate(324.0)" />
+        <circle cx="0" cy="0" stroke="&sun_stroke;" stroke-width="0"
+              fill="&sun_fill;" r="7.5"/>
+        <use xlink:href="#unichr(0x00A9)"
+          stroke="&base_stroke;" fill="&base_fill;"
+          transform="scale(.7,.7)"/>
+      </g>
+    </defs>
+    <use xlink:href="#Cog_1_10"
+      transform="translate(27.5,27.5) rotate( 0.0)" />
+    <defs>
+      <g id="Cog_2_6" transform="none" opacity=".8">
+        <defs>
+          <path id="Cog_2_6_tooth" stroke="&planet_stroke;"
+            stroke-width="0" d="
+               M 3.49098,-1.36951
+               A 0.39375 0.39375 0 0 0 3.96585,-1.13475
+               L 4.90129,-1.40241
+               A 1.18861 1.18861 0 0 1 5.08442,-1.42512
+               A 2.37723 2.37723 0 0 1 6.00819,-1.23229
+               A 4.84242 4.84242 0 0 1 7.00373,-0.62152
+               A 0.29071 0.29071 0 0 1 7.11316,-0.41062
+               A 7.12500 7.12500 0 0 1 7.11316,0.41062
+               A 0.29071 0.29071 0 0 1 7.00373,0.62152
+               A 4.84242 4.84242 0 0 1 6.00819,1.23229
+               A 2.37723 2.37723 0 0 1 5.08442,1.42512
+               A 1.18861 1.18861 0 0 1 4.90129,1.40241
+               L 3.96585,1.13475
+               A 0.39375 0.39375 0 0 0 3.49098,1.36951
+               L 3.49098,-1.36951"
+            fill="&planet_fill;" stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </defs>
+        <use xlink:href="#Cog_2_6_tooth" transform="rotate( 0.0)" />
+        <use xlink:href="#Cog_2_6_tooth" transform="rotate(60.0)" />
+        <use xlink:href="#Cog_2_6_tooth" transform="rotate(120.0)" />
+        <use xlink:href="#Cog_2_6_tooth" transform="rotate(180.0)" />
+        <use xlink:href="#Cog_2_6_tooth" transform="rotate(240.0)" />
+        <use xlink:href="#Cog_2_6_tooth" transform="rotate(300.0)" />
+        <circle cx="0" cy="0" stroke="&planet_stroke;" stroke-width="0"
+              fill="&planet_fill;" r="3.75000"/>
+        <use xlink:href="#unichr(0x00A9)"
+          stroke="&text_stroke;" fill="&text_fill;"
+          transform="rotate(-150.0) scale(.35,.35)" />
+      </g>
+    </defs>
+    <use xlink:href="#Cog_2_6"
+      transform="translate(27.5,12.5) rotate(150.0)" />
+    <use xlink:href="#Cog_2_6"
+      transform="translate(40.49038,35.0) rotate(110.0)" />
+    <use xlink:href="#Cog_2_6"
+      transform="translate(14.50962,35.0) rotate(-170.0)" />
+    <path id="path_2" fill-rule="evenodd" d="
+        M 19.381012,37.8125
+        A 13.125,13.125 0 0 0 35.618988,37.8125
+        A  5.625, 5.625 0 1 0 40.490381,29.375
+        A 13.125,13.125 0 0 0 32.371393,15.3125
+        A  5.625, 5.625 0 1 0 22.628607,15.3125
+        A 13.125,13.125 0 0 0 14.509619,29.375
+        A  5.625, 5.625 0 1 0 19.381012,37.8125
+        M 35.612490,14.0
+        A  8.25 , 8.25  0 1 0 19.387510,14.0
+        A 15.75 ,15.75  0 0 0 11.752412,27.224377
+        A  8.25 , 8.25  0 1 0 19.864902,41.275623
+        A 15.75 ,15.75  0 0 0 35.135098,41.275623
+        A  8.25 , 8.25  0 1 0 43.247588,27.224377
+        A 15.75 ,15.75  0 0 0 35.612490,14.0
+      "
+      fill="&case;" stroke="&gold;" stroke-width="0.1"
+      stroke-linejoin="round" opacity=".8"/>
+  </g>
+</svg>
