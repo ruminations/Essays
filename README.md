@@ -37,7 +37,7 @@ In the subsequent sections, the essays in this repository are grouped by classif
 ----------
 # α Essays
 
-####A Square Peg in a Round Hole [(pdf)](Polygonal_Pegs/A_Square_Peg_in_a_Round_Hole.pdf)
+#### A Square Peg in a Round Hole [(pdf)](Polygonal_Pegs/A_Square_Peg_in_a_Round_Hole.pdf)
 
 An elementary mathematical analysis of the constraints involved for creating polygonal holes with round tools.  Supplementary material includes a public domain `python` script and eight `.svg` images as well as the `LyX` source document.
 
